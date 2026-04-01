@@ -2,732 +2,226 @@
 
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bosphorus Fellas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <title>Egemen & Gizem · 9 Mayıs 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --red: #C8102E;
-      --dark: #0a0a0a;
-      --darker: #050505;
-      --light: #f0ece3;
-      --muted: #888;
-      --plate-yellow: #F5C518;
-      --plate-dark: #1a1a1a;
+      --cream: #faf6f0;
+      --rose: #c9847a;
+      --rose-light: #e8b4ae;
+      --rose-dark: #a0635a;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --gold-dark: #9a7a45;
+      --warm: #f5ede3;
+      --text: #3a2e28;
+      --text-light: #7a6a60;
+      --white: #fffdf9;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
 ```
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--darker);
-  color: var(--light);
-  font-family: 'Barlow', sans-serif;
-  overflow-x: hidden;
-  cursor: default;
-}
-
-/* ── NAVIGATION ── */
+/* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48px;
-  height: 72px;
-  background: rgba(5,5,5,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200,16,46,0.2);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(250,246,240,0.93); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,169,110,0.2);
 }
-
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 4px;
-  color: var(--light);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px;
 }
-
-.nav-logo span { color: var(--red); }
-
-.nav-buttons {
-  display: flex;
-  gap: 0;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 4px;
-  overflow: hidden;
+.nav-monogram { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold-dark); letter-spacing: 4px; }
+.nav-links { display: flex; gap: 2px; }
+.nav-link {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-light);
+  text-decoration: none; padding: 8px 12px; border-radius: 2px; transition: all 0.2s;
 }
+.nav-link:hover { color: var(--gold-dark); background: rgba(201,169,110,0.08); }
 
-.nav-btn {
-  padding: 10px 28px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: all 0.25s;
+/* HERO */
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden; background: var(--white); padding-top: 64px;
 }
-
-.nav-btn.home {
-  background: transparent;
-  color: var(--light);
+.corner { position: absolute; width: 130px; height: 130px; opacity: 0.22; }
+.corner-tl { top: 80px; left: 28px; }
+.corner-tr { top: 80px; right: 28px; transform: scaleX(-1); }
+.corner-bl { bottom: 28px; left: 28px; transform: scaleY(-1); }
+.corner-br { bottom: 28px; right: 28px; transform: scale(-1); }
+.hero-content { text-align: center; position: relative; z-index: 2; padding: 40px 24px; }
+.hero-pre {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px;
+  color: var(--gold); letter-spacing: 3px; margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
 }
-
-.nav-btn.home:hover, .nav-btn.home.active {
-  background: rgba(255,255,255,0.07);
-  color: #fff;
+.hero-names {
+  font-family: 'Cinzel', serif; font-size: clamp(50px, 10vw, 108px);
+  font-weight: 400; color: var(--text); line-height: 1; letter-spacing: 4px;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.6s;
 }
-
-.nav-btn.apply {
-  background: var(--red);
-  color: #fff;
+.hero-names .amp {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+  color: var(--rose); font-size: 0.65em; display: block; letter-spacing: 8px; margin: 10px 0;
 }
-
-.nav-btn.apply:hover {
-  background: #a50d24;
+.gold-line {
+  width: 100px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 28px auto; opacity: 0; animation: fadeUp 1s ease forwards 0.9s;
 }
-
-/* ── HERO ── */
-#home {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding-top: 72px;
+.hero-date {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300;
+  color: var(--text-light); letter-spacing: 5px;
+  opacity: 0; animation: fadeUp 1s ease forwards 1.1s;
 }
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,16,46,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,16,46,0.06) 0%, transparent 60%),
-    linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
-}
-
-/* Road lines animation */
-.road-lines {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 180px;
-  overflow: hidden;
-  opacity: 0.15;
-}
-
-.road-line {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 80px;
-  background: var(--light);
-  animation: roadMove 1.2s linear infinite;
-}
-.road-line:nth-child(2) { left: calc(50% - 60px); animation-delay: 0.4s; }
-.road-line:nth-child(3) { left: calc(50% + 60px); animation-delay: 0.8s; }
-
-@keyframes roadMove {
-  0% { transform: translateY(0) translateX(-50%); opacity: 1; }
-  100% { transform: translateY(100px) translateX(-50%); opacity: 0; }
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-}
-
-.hero-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.3s;
-}
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(80px, 14vw, 180px);
-  line-height: 0.9;
-  letter-spacing: 8px;
-  color: var(--light);
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.5s;
-}
-
-.hero-title .stroke {
-  -webkit-text-stroke: 2px var(--light);
-  color: transparent;
-}
-
-.hero-title .red { color: var(--red); }
-
 .hero-sub {
-  margin-top: 32px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: var(--muted);
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.7s;
+  margin-top: 10px; font-size: 10px; font-weight: 300; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--rose);
+  opacity: 0; animation: fadeUp 1s ease forwards 1.3s;
 }
-
-/* License plate decoration */
-.plate-hero {
-  margin: 40px auto 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.9s;
+.ring-anim {
+  font-size: 52px; margin-top: 32px; display: block;
+  opacity: 0; animation: fadeUp 1s ease forwards 1.5s, float 3s ease-in-out infinite 2.5s;
 }
-
-.plate-strip {
-  background: #003DA5;
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 1px;
-  padding: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  border-radius: 4px 0 0 4px;
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 1s ease forwards 2s;
 }
+.scroll-hint span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); }
+.scroll-dot { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-.plate-strip .eu-stars { font-size: 8px; letter-spacing: 1px; }
-.plate-strip .eu-tr { font-size: 10px; }
+/* SECTIONS */
+.page-section { padding: 100px 32px; max-width: 900px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-eyebrow { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--gold); letter-spacing:2px; margin-bottom:10px; }
+.section-title { font-family:'Cinzel',serif; font-size:clamp(28px,5vw,44px); font-weight:400; color:var(--text); letter-spacing:3px; }
+.section-divider { display:flex; align-items:center; gap:14px; margin:18px auto 0; width:fit-content; }
+.div-line { width:55px; height:1px; background:var(--gold-light); }
+.div-diamond { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
 
-.plate-main {
-  background: var(--plate-yellow);
-  color: #111;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  letter-spacing: 6px;
-  padding: 8px 28px;
-  border-radius: 0 4px 4px 0;
-  border: 2px solid #c8a800;
-  border-left: none;
+/* AILELER */
+#aileler { background: var(--warm); }
+.families-wrap { display:grid; grid-template-columns:1fr auto 1fr; align-items:start; }
+.family-card { padding:48px 36px; text-align:center; }
+.family-label { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
+.family-name { font-family:'Cinzel',serif; font-size:20px; font-weight:400; color:var(--text); letter-spacing:2px; margin-bottom:20px; }
+.parent-row { margin-bottom:10px; }
+.parent-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-light); font-family:'Montserrat',sans-serif; margin-bottom:2px; }
+.parent-name { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text-light); }
+.family-person { margin-top:24px; font-family:'Cinzel',serif; font-size:19px; color:var(--text); letter-spacing:2px; }
+.families-center { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 20px; gap:12px; }
+.fam-amp { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:60px; color:var(--rose-light); line-height:1; }
+.vert-line { width:1px; height:70px; background:linear-gradient(to bottom,transparent,var(--gold-light),transparent); }
+
+/* ANKET */
+#anket { background: var(--white); }
+.anket-intro { text-align:center; font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--text-light); margin-bottom:48px; line-height:1.8; }
+.anket-form { max-width:540px; margin:0 auto; display:flex; flex-direction:column; gap:20px; }
+.anket-field { display:flex; flex-direction:column; gap:8px; }
+.anket-field label { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); }
+.anket-field input {
+  background:var(--cream); border:1px solid var(--gold-light); color:var(--text);
+  font-family:'Cormorant Garamond',serif; font-size:18px; padding:14px 18px;
+  outline:none; transition:border-color 0.25s;
 }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.anket-field input:focus { border-color:var(--gold); }
+.anket-field input::placeholder { color:var(--rose-light); }
+.katilim-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.katilim-btn {
+  padding:22px 12px; border:1px solid var(--gold-light); background:transparent;
+  cursor:pointer; font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px;
+  color:var(--text-light); transition:all 0.25s;
 }
-
-/* ── ABOUT SECTION ── */
-.section {
-  padding: 120px 48px;
-  max-width: 1200px;
-  margin: 0 auto;
+.katilim-btn .btn-icon { font-size:26px; display:block; margin-bottom:8px; }
+.katilim-btn.yes.selected { background:var(--gold); border-color:var(--gold); color:#fff; }
+.katilim-btn.no.selected { background:var(--rose); border-color:var(--rose); color:#fff; }
+.katilim-btn:hover { opacity:0.85; }
+.anket-note { font-size:10px; letter-spacing:1px; color:var(--rose-light); text-align:center; margin-top:2px; }
+.anket-submit {
+  margin-top:4px; background:var(--text); color:var(--cream);
+  border:none; font-family:'Cinzel',serif; font-size:12px; letter-spacing:4px;
+  padding:18px; cursor:pointer; transition:background 0.25s; text-transform:uppercase;
 }
+.anket-submit:hover { background:var(--gold-dark); }
+.anket-success { display:none; text-align:center; padding:48px 24px; }
+.anket-success .ck { font-size:56px; margin-bottom:18px; }
+.anket-success h3 { font-family:'Cinzel',serif; font-size:24px; letter-spacing:3px; margin-bottom:10px; }
+.anket-success p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--text-light); }
 
-.section-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 16px;
+/* MENU */
+#menu { background: var(--warm); }
+.menu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.menu-cat { background:var(--white); padding:36px 32px; border:1px solid rgba(201,169,110,0.12); }
+.menu-cat-title { font-family:'Cinzel',serif; font-size:13px; letter-spacing:3px; color:var(--gold-dark); margin-bottom:4px; }
+.menu-cat-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; color:var(--rose-light); margin-bottom:20px; }
+.menu-item { padding:9px 0; border-bottom:1px dashed rgba(201,169,110,0.2); }
+.menu-item:last-child { border-bottom:none; }
+.menu-item-name { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text); }
+.menu-note { text-align:center; margin-top:28px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-light); }
+
+/* YUKLE */
+#yukle { background: var(--white); }
+.upload-area { max-width:580px; margin:0 auto; text-align:center; }
+.upload-box {
+  border:2px dashed var(--gold-light); padding:60px 36px;
+  cursor:pointer; transition:all 0.3s; background:var(--warm);
 }
-
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(48px, 6vw, 80px);
-  line-height: 1;
-  letter-spacing: 3px;
-  color: var(--light);
-  margin-bottom: 32px;
+.upload-box:hover { border-color:var(--gold); background:rgba(201,169,110,0.05); }
+.upload-icon { font-size:48px; margin-bottom:18px; }
+.upload-title { font-family:'Cinzel',serif; font-size:15px; letter-spacing:3px; color:var(--text); margin-bottom:10px; }
+.upload-sub { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--text-light); margin-bottom:24px; line-height:1.7; }
+.upload-btn {
+  display:inline-block; background:var(--gold); color:#fff;
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px;
+  padding:14px 32px; cursor:pointer; transition:background 0.25s; border:none;
 }
-
-.divider {
-  width: 60px;
-  height: 3px;
-  background: var(--red);
-  margin-bottom: 48px;
+.upload-btn:hover { background:var(--gold-dark); }
+#file-input { display:none; }
+.preview-grid { margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.preview-item {
+  aspect-ratio:1; background:var(--warm); border:1px solid var(--gold-light);
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--text-light);
 }
-
-/* About grid */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+.preview-item img { width:100%; height:100%; object-fit:cover; }
+.drive-note { margin-top:20px; font-size:11px; color:var(--rose-light); font-style:italic; letter-spacing:1px; }
+.gdrive-btn {
+  display:inline-block; margin-top:16px;
+  border:1px solid var(--gold-light); color:var(--text-light);
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px;
+  padding:13px 28px; text-decoration:none; transition:all 0.25s;
 }
-
-.about-text p {
-  font-size: 17px;
-  line-height: 1.8;
-  color: rgba(240,236,227,0.75);
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-.about-text strong { color: var(--light); font-weight: 500; }
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-
-.stat-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 36px 28px;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s;
-}
-
-.stat-card:hover { border-color: rgba(200,16,46,0.4); }
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-  transform-origin: left;
-}
-
-.stat-card:hover::before { transform: scaleX(1); }
-
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 56px;
-  color: var(--light);
-  line-height: 1;
-  letter-spacing: 2px;
-}
-
-.stat-num span { color: var(--red); font-size: 40px; }
-
-.stat-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-/* ── BULUŞMALAR ── */
-.meetings-section {
-  background: rgba(200,16,46,0.04);
-  border-top: 1px solid rgba(200,16,46,0.1);
-  border-bottom: 1px solid rgba(200,16,46,0.1);
-}
-
-.meetings-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 48px;
-}
-
-.meetings-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 64px;
-}
-
-.schedule-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
-
-.schedule-card {
-  background: var(--darker);
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 48px 36px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.schedule-card:hover {
-  background: rgba(200,16,46,0.06);
-  border-color: rgba(200,16,46,0.3);
-  transform: translateY(-4px);
-}
-
-.schedule-card .day {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  letter-spacing: 3px;
-  color: var(--red);
-  line-height: 1;
-}
-
-.schedule-card .time {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 15px;
-  letter-spacing: 3px;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin: 8px 0 20px;
-}
-
-.schedule-card .location-name {
-  font-family: 'Barlow', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--light);
-  margin-bottom: 6px;
-}
-
-.schedule-card .location-sub {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.schedule-card .card-icon {
-  position: absolute;
-  top: 32px; right: 32px;
-  font-size: 32px;
-  opacity: 0.15;
-}
-
-/* ── ARAÇ PLAKALARI ── */
-.plates-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 48px;
-}
-
-.plates-scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 24px;
-  scrollbar-width: none;
-}
-.plates-scroll::-webkit-scrollbar { display: none; }
-
-.plate-item {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: stretch;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: default;
-}
-
-.plate-item:hover {
-  transform: translateY(-4px) rotate(-1deg);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-}
-
-.plate-item .pl-strip {
-  background: #003DA5;
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 8px;
-  gap: 1px;
-  min-width: 36px;
-}
-
-.pl-strip .stars { font-size: 7px; letter-spacing: 1px; }
-.pl-strip .code { font-size: 9px; letter-spacing: 1px; }
-
-.plate-item .pl-body {
-  background: var(--plate-yellow);
-  color: #111;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 5px;
-  padding: 10px 20px;
-  border: 2px solid #c8a800;
-  border-left: none;
-  display: flex;
-  align-items: center;
-}
-
-/* ── APPLY SECTION ── */
-#apply {
-  background: var(--darker);
-}
-
-.apply-inner {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 120px 48px;
-}
-
-.apply-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-field.full { grid-column: 1 / -1; }
-
-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-input, select, textarea {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--light);
-  font-family: 'Barlow', sans-serif;
-  font-size: 15px;
-  padding: 14px 18px;
-  border-radius: 2px;
-  outline: none;
-  transition: border-color 0.25s, background 0.25s;
-  appearance: none;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: var(--red);
-  background: rgba(200,16,46,0.05);
-}
-
-input::placeholder, textarea::placeholder {
-  color: rgba(255,255,255,0.2);
-}
-
-select option { background: #111; color: var(--light); }
-
-/* PLATE input styled */
-.plate-input-wrap {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 2px;
-  overflow: hidden;
-  transition: border-color 0.25s;
-}
-
-.plate-input-wrap:focus-within {
-  border-color: var(--red);
-}
-
-.plate-prefix {
-  background: #003DA5;
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 14px;
-  padding: 0 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1px;
-  letter-spacing: 1px;
-  flex-shrink: 0;
-}
-
-.plate-prefix .p-stars { font-size: 7px; }
-.plate-prefix .p-tr { font-size: 9px; }
-
-.plate-input-wrap input {
-  background: var(--plate-yellow);
-  color: #111;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 6px;
-  border: none;
-  border-left: 2px solid #c8a800;
-  border-radius: 0;
-  flex: 1;
-  padding: 14px 18px;
-}
-
-.plate-input-wrap input::placeholder {
-  color: rgba(0,0,0,0.3);
-  letter-spacing: 4px;
-}
-
-.plate-input-wrap input:focus {
-  background: #f5c518;
-  outline: none;
-}
-
-textarea { resize: vertical; min-height: 120px; }
-
-.submit-btn {
-  width: 100%;
-  margin-top: 16px;
-  background: var(--red);
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  letter-spacing: 5px;
-  padding: 20px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-
-.submit-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.1);
-  transform: translateX(-100%);
-  transition: transform 0.4s;
-}
-
-.submit-btn:hover::before { transform: translateX(0); }
-.submit-btn:hover { background: #a50d24; }
-
-.form-note {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 1px;
-}
-
-/* ── SUCCESS MESSAGE ── */
-.success-msg {
-  display: none;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.success-msg .check {
-  font-size: 64px;
-  margin-bottom: 24px;
-  animation: pop 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
-}
-
-@keyframes pop {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
-}
-
-.success-msg h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  letter-spacing: 3px;
-  color: var(--light);
-  margin-bottom: 12px;
-}
-
-.success-msg p {
-  color: var(--muted);
-  font-size: 16px;
-}
-
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 4px;
-  color: var(--light);
-}
-
-.footer-logo span { color: var(--red); }
-
-.footer-links {
-  display: flex;
-  gap: 32px;
-}
-
-.footer-links a {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--light); }
-
-.footer-copy {
-  font-size: 12px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 1px;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .section, .meetings-inner, .plates-section, .apply-inner { padding: 80px 24px; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .schedule-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .meetings-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  footer { flex-direction: column; gap: 24px; text-align: center; }
-  .footer-links { flex-wrap: wrap; justify-content: center; }
-  .hero-title { letter-spacing: 4px; }
-}
-
-/* Scroll animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.gdrive-btn:hover { background:var(--text); color:var(--cream); border-color:var(--text); }
+
+/* FOOTER */
+footer { background:var(--text); color:var(--cream); text-align:center; padding:64px 32px; }
+.footer-ring { font-size:28px; margin-bottom:16px; display:block; }
+.footer-names { font-family:'Cinzel',serif; font-size:26px; letter-spacing:6px; color:var(--gold-light); margin-bottom:10px; }
+.footer-date { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:rgba(250,246,240,0.45); letter-spacing:3px; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.8s ease,transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  .nav-link { padding:8px 7px; font-size:9px; letter-spacing:1px; }
+  .families-wrap { grid-template-columns:1fr; }
+  .families-center { flex-direction:row; padding:0 16px 32px; }
+  .vert-line { width:60px; height:1px; }
+  .menu-grid { grid-template-columns:1fr; }
+  .corner { width:70px; height:70px; }
+  .preview-grid { grid-template-columns:repeat(2,1fr); }
 }
 ```
 
@@ -735,266 +229,314 @@ footer {
 </head>
 <body>
 
-<!-- NAVIGATION -->
-
 <nav>
-  <div class="nav-logo">BOSPHORUS<span>.</span>FELLAS</div>
-  <div class="nav-buttons">
-    <a href="#home" class="nav-btn home active" onclick="showSection('home', this)">Ana Sayfa</a>
-    <a href="#apply" class="nav-btn apply" onclick="showSection('apply', this)">Başvuru Yap</a>
+  <div class="nav-inner">
+    <div class="nav-monogram">E &amp; G</div>
+    <div class="nav-links">
+      <a class="nav-link" href="#hero">Hoş Geldiniz</a>
+      <a class="nav-link" href="#aileler">Aileler</a>
+      <a class="nav-link" href="#anket">Katılım</a>
+      <a class="nav-link" href="#menu">Menü</a>
+      <a class="nav-link" href="#yukle">Fotoğraf</a>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
 
-<section id="home">
-  <div class="hero-bg"></div>
-  <div class="road-lines">
-    <div class="road-line"></div>
-    <div class="road-line"></div>
-    <div class="road-line"></div>
+<section id="hero">
+  <!-- Köşe süslemeleri -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
+      <circle cx="8" cy="92" r="2" fill="#c9a96e" opacity="0.4"/>
+      <circle cx="92" cy="8" r="2" fill="#c9a96e" opacity="0.4"/>
+    </svg>
   </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
+      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
+      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
+    </svg>
+  </div>
+
   <div class="hero-content">
-    <p class="hero-eyebrow">İstanbul · Türkiye · Est. 2020</p>
-    <h1 class="hero-title">
-      BOSPHORUS<br><span class="stroke red">FELLAS</span>
+    <p class="hero-pre">Söz &amp; Nişan Merasimi</p>
+    <h1 class="hero-names">
+      Egemen
+      <span class="amp">&amp;</span>
+      Gizem
     </h1>
-    <p class="hero-sub">İstanbul'un kalbinden yükselen araba tutkusu</p>
-    <div class="plate-hero">
-      <div class="plate-strip">
-        <span class="eu-stars">★★★★★</span>
-        <span class="eu-tr">TR</span>
+    <div class="gold-line"></div>
+    <p class="hero-date">9 Mayıs 2026</p>
+    <p class="hero-sub">Sizi aramızda görmekten mutluluk duyarız</p>
+    <span class="ring-anim">💍</span>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Keşfet</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- AİLELER -->
+
+<section id="aileler">
+  <div class="page-section reveal">
+    <div class="section-header">
+      <p class="section-eyebrow">Mutlu Aileler</p>
+      <h2 class="section-title">Aileleriyle Birlikte</h2>
+      <div class="section-divider">
+        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
       </div>
-      <div class="plate-main">34 BF 001</div>
+    </div>
+    <div class="families-wrap">
+      <div class="family-card">
+        <div class="family-label">Damat</div>
+        <div class="family-name">Tutmuş Ailesi</div>
+        <div class="parent-row">
+          <div class="parent-label">Baba</div>
+          <div class="parent-name">İsmail Tutmuş</div>
+        </div>
+        <div class="parent-row">
+          <div class="parent-label">Anne</div>
+          <div class="parent-name">Elnar Tutmuş</div>
+        </div>
+        <div class="family-person">Egemen Tutmuş</div>
+      </div>
+      <div class="families-center">
+        <div class="vert-line"></div>
+        <div class="fam-amp">&amp;</div>
+        <div class="vert-line"></div>
+      </div>
+      <div class="family-card">
+        <div class="family-label">Gelin</div>
+        <div class="family-name">Gündüz Ailesi</div>
+        <div class="parent-row">
+          <div class="parent-label">Baba</div>
+          <div class="parent-name">Ersoy Gündüz</div>
+        </div>
+        <div class="parent-row">
+          <div class="parent-label">Anne</div>
+          <div class="parent-name">Meral Gündüz</div>
+        </div>
+        <div class="family-person">Gizem Gündüz</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ANKET -->
 
-<div class="section reveal">
-  <p class="section-label">Hakkımızda</p>
-  <h2 class="section-title">Asfaltta<br>Birliktelik</h2>
-  <div class="divider"></div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        <strong>Bosphorus Fellas</strong>, İstanbul'un köprüleri, sahil yolları ve virajlı sokaklarından ilham alan bir araba topluluğudur. Markanız, modeliniz fark etmez — burada tek şart otomobile duyulan gerçek tutku.
-      </p>
-      <p>
-        Her hafta düzenlediğimiz buluşmalarda yeni insanlarla tanışır, arabalarımızı paylaşır ve İstanbul'un dört bir yanında sürüş keyfi yaşarız. Sabah erken saatlerde yola çıkmak, gün batımında limanda durmak — hepsini birlikte deneyimleriz.
-      </p>
-      <p>
-        Ailemizin bir parçası olmak için tek ihtiyacın: <strong>direksiyon sevgisi.</strong>
-      </p>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">150<span>+</span></div>
-        <div class="stat-label">Aktif Üye</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">52<span>+</span></div>
-        <div class="stat-label">Yıllık Buluşma</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">3<span>yıl</span></div>
-        <div class="stat-label">Deneyim</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">34<span>il</span></div>
-        <div class="stat-label">İstanbul & Çevresi</div>
+<section id="anket">
+  <div class="page-section reveal">
+    <div class="section-header">
+      <p class="section-eyebrow">Katılım Bildirimi</p>
+      <h2 class="section-title">Bize Bildirin</h2>
+      <div class="section-divider">
+        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- MEETINGS -->
-
-<div class="meetings-section">
-  <div class="meetings-inner">
-    <div class="meetings-header reveal">
-      <div>
-        <p class="section-label">Program</p>
-        <h2 class="section-title">Haftalık<br>Buluşmalar</h2>
-        <div class="divider"></div>
+    <p class="anket-intro">
+      9 Mayıs 2026 tarihinde düzenlenecek olan<br/>
+      söz ve nişan merasimimize katılımınızı bekliyoruz.
+    </p>
+    <div class="anket-form" id="anket-form">
+      <div class="anket-field">
+        <label>Adınız Soyadınız</label>
+        <input type="text" id="a-name" placeholder="Adınızı giriniz"/>
       </div>
-    </div>
-    <div class="schedule-grid reveal">
-      <div class="schedule-card">
-        <div class="card-icon">🌅</div>
-        <div class="day">Cumartesi</div>
-        <div class="time">08:00 — Sabah Sürüşü</div>
-        <div class="location-name">Sahil Buluşması</div>
-        <div class="location-sub">Boğaz kenarında araçlarımızla sabahın ilk ışıklarında bir araya geliyoruz.</div>
+      <div class="anket-field">
+        <label>Telefon (isteğe bağlı)</label>
+        <input type="tel" id="a-phone" placeholder="+90 5__ ___ __ __"/>
       </div>
-      <div class="schedule-card">
-        <div class="card-icon">🏁</div>
-        <div class="day">Pazar</div>
-        <div class="time">10:00 — Konvoy</div>
-        <div class="location-name">Haftalık Konvoy</div>
-        <div class="location-sub">İstanbul çevresi ve yakın rotalarda organize sürüş günü. Herkes davetli.</div>
+      <div class="anket-field">
+        <label>Kaç kişi katılacaksınız?</label>
+        <input type="number" id="a-count" placeholder="1" min="1" max="10"/>
       </div>
-      <div class="schedule-card">
-        <div class="card-icon">☕</div>
-        <div class="day">Çarşamba</div>
-        <div class="time">19:00 — Takılma</div>
-        <div class="location-name">Cars & Coffee</div>
-        <div class="location-sub">Hafta ortası buluşması. Araçlar, sohbet ve kahve. Kasual, rahat, eğlenceli.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PLATES -->
-
-<div class="plates-section reveal">
-  <p class="section-label">Üyelerimizden</p>
-  <h2 class="section-title" style="margin-bottom:16px;">Plakalı<br>Aileler</h2>
-  <div class="divider"></div>
-  <p style="color:var(--muted);font-size:15px;margin-bottom:40px;font-weight:300;">
-    Grubumuzda her plaka bir hikaye anlatır. İşte aramızdaki bazı araçlar.
-  </p>
-  <div class="plates-scroll">
-    <!-- Plate items -->
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">34 ABD 21</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">06 KRM 44</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">34 SPD 99</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">35 BLK 07</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">34 ZRN 18</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">16 FLS 34</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">34 MRC 55</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">41 GTS 02</div></div>
-    <div class="plate-item"><div class="pl-strip"><span class="stars">★★★★★</span><span class="code">TR</span></div><div class="pl-body">34 BOS 01</div></div>
-  </div>
-</div>
-
-<!-- APPLY SECTION -->
-
-<section id="apply">
-  <div class="apply-inner">
-    <div class="apply-header reveal">
-      <p class="section-label">Katıl</p>
-      <h2 class="section-title">Aramıza<br>Katıl</h2>
-      <div class="divider" style="margin: 0 auto 20px;"></div>
-      <p style="color:var(--muted);font-size:15px;font-weight:300;max-width:500px;margin:0 auto;">
-        Başvurunu yap, seni değerlendirelim. Her araç ve her tutkuya saygımız var.
-      </p>
-    </div>
-
-```
-<div id="form-wrap" class="reveal">
-  <div class="form-grid">
-    <div class="form-field">
-      <label>Ad Soyad</label>
-      <input type="text" placeholder="Adın Soyadın" id="f-name"/>
-    </div>
-    <div class="form-field">
-      <label>Telefon</label>
-      <input type="tel" placeholder="+90 5__ ___ __ __" id="f-phone"/>
-    </div>
-    <div class="form-field">
-      <label>Instagram</label>
-      <input type="text" placeholder="@kullanici_adi" id="f-ig"/>
-    </div>
-    <div class="form-field">
-      <label>Şehir</label>
-      <select id="f-city">
-        <option value="" disabled selected>Şehir seç</option>
-        <option>İstanbul (Avrupa)</option>
-        <option>İstanbul (Anadolu)</option>
-        <option>Bursa</option>
-        <option>Kocaeli</option>
-        <option>Diğer</option>
-      </select>
-    </div>
-
-    <div class="form-field full">
-      <label>Araç Plakası</label>
-      <div class="plate-input-wrap">
-        <div class="plate-prefix">
-          <span class="p-stars">★★★★★</span>
-          <span class="p-tr">TR</span>
+      <div class="anket-field">
+        <label>Katılım Durumu</label>
+        <div class="katilim-btns">
+          <button class="katilim-btn yes" id="btn-yes" onclick="selectKatilim('yes')">
+            <span class="btn-icon">🥂</span>Katılıyorum
+          </button>
+          <button class="katilim-btn no" id="btn-no" onclick="selectKatilim('no')">
+            <span class="btn-icon">🙏</span>Katılamıyorum
+          </button>
         </div>
-        <input type="text" placeholder="34 XX 000" id="f-plate"
-          oninput="this.value=this.value.toUpperCase()" maxlength="10"/>
+        <p class="anket-note">* Yanıtınız yalnızca organizasyon için kullanılacaktır</p>
       </div>
+      <button class="anket-submit" onclick="submitAnket()">Bildirimi Gönder</button>
     </div>
-
-    <div class="form-field">
-      <label>Araç Markası</label>
-      <input type="text" placeholder="BMW, Mercedes, Toyota..." id="f-brand"/>
-    </div>
-    <div class="form-field">
-      <label>Model & Yıl</label>
-      <input type="text" placeholder="E46, 2003" id="f-model"/>
-    </div>
-
-    <div class="form-field full">
-      <label>Neden Bosphorus Fellas?</label>
-      <textarea placeholder="Kendini ve arabanı kısaca tanıt..." id="f-why"></textarea>
+    <div class="anket-success" id="anket-success">
+      <div class="ck">💌</div>
+      <h3>Teşekkürler!</h3>
+      <p>Yanıtınız alındı. Görüşmek üzere! 🥂</p>
     </div>
   </div>
+</section>
 
-  <button class="submit-btn" onclick="submitForm()">BAŞVURUYU GÖNDER</button>
-  <p class="form-note">Başvurular Instagram üzerinden değerlendirilir · Geri dönüş yapılır</p>
-</div>
+<!-- MENU -->
 
-<div class="success-msg" id="success">
-  <div class="check">🏁</div>
-  <h3>BAŞVURUN ALINDI!</h3>
-  <p>Ekibimiz Instagram üzerinden seninle iletişime geçecek.<br>
-  Hoş geldin aileye. 🤙</p>
-</div>
-```
+<section id="menu">
+  <div class="page-section reveal">
+    <div class="section-header">
+      <p class="section-eyebrow">Akşam Yemeği</p>
+      <h2 class="section-title">Menü</h2>
+      <div class="section-divider">
+        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-cat">
+        <div class="menu-cat-title">Başlangıçlar</div>
+        <div class="menu-cat-sub">Soğuk &amp; Sıcak</div>
+        <div class="menu-item"><span class="menu-item-name">Karışık Meze Tabağı</span></div>
+        <div class="menu-item"><span class="menu-item-name">Mercimek Çorbası</span></div>
+        <div class="menu-item"><span class="menu-item-name">Peynirli Börek</span></div>
+        <div class="menu-item"><span class="menu-item-name">Zeytinyağlı Yaprak Sarma</span></div>
+      </div>
+      <div class="menu-cat">
+        <div class="menu-cat-title">Ana Yemekler</div>
+        <div class="menu-cat-sub">Izgara &amp; Fırın</div>
+        <div class="menu-item"><span class="menu-item-name">Dana Antrikot</span></div>
+        <div class="menu-item"><span class="menu-item-name">Kuzu Tandır</span></div>
+        <div class="menu-item"><span class="menu-item-name">Tavuk Şiş</span></div>
+        <div class="menu-item"><span class="menu-item-name">Sebzeli Pilav</span></div>
+      </div>
+      <div class="menu-cat">
+        <div class="menu-cat-title">Salatalar</div>
+        <div class="menu-cat-sub">Taze &amp; Mevsim</div>
+        <div class="menu-item"><span class="menu-item-name">Çoban Salatası</span></div>
+        <div class="menu-item"><span class="menu-item-name">Roka &amp; Parmesan</span></div>
+        <div class="menu-item"><span class="menu-item-name">Mevsim Salatası</span></div>
+      </div>
+      <div class="menu-cat">
+        <div class="menu-cat-title">Tatlılar &amp; İçecekler</div>
+        <div class="menu-cat-sub">Tatlı &amp; Serinletici</div>
+        <div class="menu-item"><span class="menu-item-name">Söz Pastası 🎂</span></div>
+        <div class="menu-item"><span class="menu-item-name">Sütlaç</span></div>
+        <div class="menu-item"><span class="menu-item-name">Baklava</span></div>
+        <div class="menu-item"><span class="menu-item-name">Meşrubat &amp; Çay</span></div>
+      </div>
+    </div>
+    <p class="menu-note">Menü değişiklik gösterebilir · Diyet gereksinimleriniz için lütfen önceden bildiriniz</p>
+  </div>
+</section>
 
+<!-- FOTOĞRAF YÜKLEME -->
+
+<section id="yukle">
+  <div class="page-section reveal">
+    <div class="section-header">
+      <p class="section-eyebrow">Anılarınızı Paylaşın</p>
+      <h2 class="section-title">Fotoğraf &amp; Video</h2>
+      <div class="section-divider">
+        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
+      </div>
+    </div>
+    <div class="upload-area">
+      <div class="upload-box" onclick="document.getElementById('file-input').click()">
+        <div class="upload-icon">📸</div>
+        <div class="upload-title">Fotoğraf &amp; Videoları Yükle</div>
+        <div class="upload-sub">
+          Merasimde çektiğiniz fotoğraf ve videoları<br/>
+          bizimle paylaşın, anılarımızı birlikte saklayalım.
+        </div>
+        <button class="upload-btn" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
+          Dosya Seç
+        </button>
+        <input type="file" id="file-input" multiple accept="image/*,video/*" onchange="handleFiles(event)"/>
+      </div>
+      <div class="preview-grid" id="preview-grid"></div>
+      <p class="drive-note">Fotoğraflarınız Google Drive'a yüklenecektir</p>
+      <!-- Google Drive linkinizi buraya ekleyin -->
+      <a class="gdrive-btn" href="GOOGLE_DRIVE_LINKINI_BURAYA_EKLE" target="_blank">
+        📁 Google Drive'a Git
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-logo">BOSPHORUS<span>.</span>FELLAS</div>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/bosphorus.fellas" target="_blank">Instagram</a>
-    <a href="#home" onclick="showSection('home')">Ana Sayfa</a>
-    <a href="#apply" onclick="showSection('apply')">Başvuru</a>
-  </div>
-  <div class="footer-copy">© 2024 Bosphorus Fellas</div>
+  <span class="footer-ring">💍</span>
+  <div class="footer-names">Egemen &amp; Gizem</div>
+  <div class="footer-date">9 Mayıs 2026 · Söz &amp; Nişan</div>
 </footer>
 
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(r => observer.observe(r));
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 }).observe(...reveals) || reveals.forEach(r =>
+    new IntersectionObserver(([e]) => { if(e.isIntersecting) e.target.classList.add('visible'); }, {threshold:0.1}).observe(r)
+  );
 
-  // Nav smooth scroll + active
-  function showSection(section, btn) {
-    document.querySelectorAll('.nav-btn.home').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+  // Katılım seçimi
+  let katilim = null;
+  function selectKatilim(v) {
+    katilim = v;
+    document.getElementById('btn-yes').classList.toggle('selected', v === 'yes');
+    document.getElementById('btn-no').classList.toggle('selected', v === 'no');
   }
 
-  // Submit
-  function submitForm() {
-    const name = document.getElementById('f-name').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
-    const plate = document.getElementById('f-plate').value.trim();
-    if (!name || !phone || !plate) {
-      alert('Lütfen Ad Soyad, Telefon ve Plaka alanlarını doldurun.');
-      return;
-    }
-    document.getElementById('form-wrap').style.display = 'none';
-    const s = document.getElementById('success');
-    s.style.display = 'block';
-    s.style.animation = 'fadeUp 0.6s ease forwards';
+  // Anket gönder
+  function submitAnket() {
+    const name = document.getElementById('a-name').value.trim();
+    if (!name) { alert('Lütfen adınızı giriniz.'); return; }
+    if (!katilim) { alert('Lütfen katılım durumunuzu seçiniz.'); return; }
+    document.getElementById('anket-form').style.display = 'none';
+    document.getElementById('anket-success').style.display = 'block';
   }
 
-  // Animated plate ticker
-  const plateData = ["34 ABD 21","06 KRM 44","34 SPD 99","35 BLK 07","34 ZRN 18","16 FLS 34","34 MRC 55","41 GTS 02","34 BOS 01"];
-  // Already hardcoded, just for reference
+  // Fotoğraf önizleme
+  function handleFiles(e) {
+    const grid = document.getElementById('preview-grid');
+    Array.from(e.target.files).forEach(file => {
+      const div = document.createElement('div');
+      div.className = 'preview-item';
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        div.appendChild(img);
+      } else {
+        div.textContent = '🎬 ' + file.name.substring(0, 14);
+      }
+      grid.appendChild(div);
+    });
+  }
 </script>
 
 </body>
