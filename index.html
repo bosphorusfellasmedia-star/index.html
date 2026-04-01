@@ -2,226 +2,427 @@
 
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Egemen & Gizem · 9 Mayıs 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <title>Gizem & Egemen — Söz 💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --cream: #faf6f0;
-      --rose: #c9847a;
-      --rose-light: #e8b4ae;
-      --rose-dark: #a0635a;
-      --gold: #c9a96e;
-      --gold-light: #e8d5b0;
-      --gold-dark: #9a7a45;
-      --warm: #f5ede3;
-      --text: #3a2e28;
-      --text-light: #7a6a60;
-      --white: #fffdf9;
+      --rose: #e8748a;
+      --rose-light: #f7c5d0;
+      --gold: #d4a84b;
+      --gold-light: #f9e9c3;
+      --cream: #fff8f0;
+      --dark: #2d1a2e;
+      --blush: #fde8ee;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--text); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
 ```
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(250,246,240,0.93); backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(201,169,110,0.2);
-}
-.nav-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 32px;
-}
-.nav-monogram { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold-dark); letter-spacing: 4px; }
-.nav-links { display: flex; gap: 2px; }
-.nav-link {
-  font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500;
-  letter-spacing: 2px; text-transform: uppercase; color: var(--text-light);
-  text-decoration: none; padding: 8px 12px; border-radius: 2px; transition: all 0.2s;
-}
-.nav-link:hover { color: var(--gold-dark); background: rgba(201,169,110,0.08); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* HERO */
-#hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  position: relative; overflow: hidden; background: var(--white); padding-top: 64px;
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
 }
-.corner { position: absolute; width: 130px; height: 130px; opacity: 0.22; }
-.corner-tl { top: 80px; left: 28px; }
-.corner-tr { top: 80px; right: 28px; transform: scaleX(-1); }
-.corner-bl { bottom: 28px; left: 28px; transform: scaleY(-1); }
-.corner-br { bottom: 28px; right: 28px; transform: scale(-1); }
-.hero-content { text-align: center; position: relative; z-index: 2; padding: 40px 24px; }
-.hero-pre {
-  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px;
-  color: var(--gold); letter-spacing: 3px; margin-bottom: 24px;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
-}
-.hero-names {
-  font-family: 'Cinzel', serif; font-size: clamp(50px, 10vw, 108px);
-  font-weight: 400; color: var(--text); line-height: 1; letter-spacing: 4px;
-  opacity: 0; animation: fadeUp 1s ease forwards 0.6s;
-}
-.hero-names .amp {
-  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-  color: var(--rose); font-size: 0.65em; display: block; letter-spacing: 8px; margin: 10px 0;
-}
-.gold-line {
-  width: 100px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 28px auto; opacity: 0; animation: fadeUp 1s ease forwards 0.9s;
-}
-.hero-date {
-  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300;
-  color: var(--text-light); letter-spacing: 5px;
-  opacity: 0; animation: fadeUp 1s ease forwards 1.1s;
-}
-.hero-sub {
-  margin-top: 10px; font-size: 10px; font-weight: 300; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--rose);
-  opacity: 0; animation: fadeUp 1s ease forwards 1.3s;
-}
-.ring-anim {
-  font-size: 52px; margin-top: 32px; display: block;
-  opacity: 0; animation: fadeUp 1s ease forwards 1.5s, float 3s ease-in-out infinite 2.5s;
-}
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-.scroll-hint {
-  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0; animation: fadeUp 1s ease forwards 2s;
-}
-.scroll-hint span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); }
-.scroll-dot { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-/* SECTIONS */
-.page-section { padding: 100px 32px; max-width: 900px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.section-eyebrow { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--gold); letter-spacing:2px; margin-bottom:10px; }
-.section-title { font-family:'Cinzel',serif; font-size:clamp(28px,5vw,44px); font-weight:400; color:var(--text); letter-spacing:3px; }
-.section-divider { display:flex; align-items:center; gap:14px; margin:18px auto 0; width:fit-content; }
-.div-line { width:55px; height:1px; background:var(--gold-light); }
-.div-diamond { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
-
-/* AILELER */
-#aileler { background: var(--warm); }
-.families-wrap { display:grid; grid-template-columns:1fr auto 1fr; align-items:start; }
-.family-card { padding:48px 36px; text-align:center; }
-.family-label { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
-.family-name { font-family:'Cinzel',serif; font-size:20px; font-weight:400; color:var(--text); letter-spacing:2px; margin-bottom:20px; }
-.parent-row { margin-bottom:10px; }
-.parent-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rose-light); font-family:'Montserrat',sans-serif; margin-bottom:2px; }
-.parent-name { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text-light); }
-.family-person { margin-top:24px; font-family:'Cinzel',serif; font-size:19px; color:var(--text); letter-spacing:2px; }
-.families-center { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 20px; gap:12px; }
-.fam-amp { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:60px; color:var(--rose-light); line-height:1; }
-.vert-line { width:1px; height:70px; background:linear-gradient(to bottom,transparent,var(--gold-light),transparent); }
-
-/* ANKET */
-#anket { background: var(--white); }
-.anket-intro { text-align:center; font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--text-light); margin-bottom:48px; line-height:1.8; }
-.anket-form { max-width:540px; margin:0 auto; display:flex; flex-direction:column; gap:20px; }
-.anket-field { display:flex; flex-direction:column; gap:8px; }
-.anket-field label { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); }
-.anket-field input {
-  background:var(--cream); border:1px solid var(--gold-light); color:var(--text);
-  font-family:'Cormorant Garamond',serif; font-size:18px; padding:14px 18px;
-  outline:none; transition:border-color 0.25s;
+/* ── CONFETTI BG ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(232,116,138,.15) 0 60px, transparent 60px),
+    radial-gradient(circle at 85% 80%, rgba(212,168,75,.15) 0 80px, transparent 80px),
+    radial-gradient(circle at 50% 50%, rgba(253,232,238,.4) 0 200px, transparent 200px);
+  pointer-events: none;
+  z-index: 0;
 }
-.anket-field input:focus { border-color:var(--gold); }
-.anket-field input::placeholder { color:var(--rose-light); }
-.katilim-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.katilim-btn {
-  padding:22px 12px; border:1px solid var(--gold-light); background:transparent;
-  cursor:pointer; font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px;
-  color:var(--text-light); transition:all 0.25s;
-}
-.katilim-btn .btn-icon { font-size:26px; display:block; margin-bottom:8px; }
-.katilim-btn.yes.selected { background:var(--gold); border-color:var(--gold); color:#fff; }
-.katilim-btn.no.selected { background:var(--rose); border-color:var(--rose); color:#fff; }
-.katilim-btn:hover { opacity:0.85; }
-.anket-note { font-size:10px; letter-spacing:1px; color:var(--rose-light); text-align:center; margin-top:2px; }
-.anket-submit {
-  margin-top:4px; background:var(--text); color:var(--cream);
-  border:none; font-family:'Cinzel',serif; font-size:12px; letter-spacing:4px;
-  padding:18px; cursor:pointer; transition:background 0.25s; text-transform:uppercase;
-}
-.anket-submit:hover { background:var(--gold-dark); }
-.anket-success { display:none; text-align:center; padding:48px 24px; }
-.anket-success .ck { font-size:56px; margin-bottom:18px; }
-.anket-success h3 { font-family:'Cinzel',serif; font-size:24px; letter-spacing:3px; margin-bottom:10px; }
-.anket-success p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--text-light); }
 
-/* MENU */
-#menu { background: var(--warm); }
-.menu-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-.menu-cat { background:var(--white); padding:36px 32px; border:1px solid rgba(201,169,110,0.12); }
-.menu-cat-title { font-family:'Cinzel',serif; font-size:13px; letter-spacing:3px; color:var(--gold-dark); margin-bottom:4px; }
-.menu-cat-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; color:var(--rose-light); margin-bottom:20px; }
-.menu-item { padding:9px 0; border-bottom:1px dashed rgba(201,169,110,0.2); }
-.menu-item:last-child { border-bottom:none; }
-.menu-item-name { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text); }
-.menu-note { text-align:center; margin-top:28px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-light); }
+/* ── HERO ── */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 70px 20px 60px;
+  z-index: 1;
+}
 
-/* YUKLE */
-#yukle { background: var(--white); }
-.upload-area { max-width:580px; margin:0 auto; text-align:center; }
+.hero .badge {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 900;
+  font-size: .8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+  animation: popIn .6s cubic-bezier(.36,1.6,.32,1) both;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 1.1;
+  color: var(--dark);
+  animation: slideUp .8s .1s cubic-bezier(.36,1.6,.32,1) both;
+}
+
+.hero h1 span { color: var(--rose); font-style: italic; }
+
+.hero .ampersand {
+  display: block;
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--gold);
+  line-height: 1;
+  animation: slideUp .8s .2s cubic-bezier(.36,1.6,.32,1) both;
+}
+
+.hero .date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blush);
+  border: 2px solid var(--rose-light);
+  border-radius: 99px;
+  padding: 10px 28px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--rose);
+  margin-top: 24px;
+  animation: slideUp .8s .35s cubic-bezier(.36,1.6,.32,1) both;
+}
+
+.hero .families {
+  margin-top: 28px;
+  font-size: .95rem;
+  color: #7a5c6e;
+  animation: slideUp .8s .45s cubic-bezier(.36,1.6,.32,1) both;
+  line-height: 2;
+}
+
+.hero .families strong { color: var(--dark); }
+
+.ring-emoji {
+  font-size: 2.2rem;
+  display: block;
+  margin: 18px auto 0;
+  animation: spin 3s linear infinite, slideUp .8s .5s both;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 8px;
+  color: var(--rose-light);
+  margin: 10px 0;
+}
+
+/* ── SECTIONS GRID ── */
+.sections {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 28px;
+  box-shadow: 0 6px 30px rgba(232,116,138,.12);
+  border: 2px solid transparent;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  cursor: pointer;
+  text-align: center;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(232,116,138,.22);
+  border-color: var(--rose-light);
+}
+
+.card .icon { font-size: 2.6rem; margin-bottom: 14px; }
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: .92rem;
+  color: #7a5c6e;
+  line-height: 1.7;
+}
+
+/* ── BIG BUTTON ── */
+.big-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--rose), #c94d6a);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 99px;
+  padding: 18px 36px;
+  cursor: pointer;
+  margin: 8px auto 0;
+  width: fit-content;
+  box-shadow: 0 8px 24px rgba(232,116,138,.45);
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+}
+.big-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 14px 32px rgba(232,116,138,.5);
+}
+.big-btn.gold {
+  background: linear-gradient(135deg, var(--gold), #b8892e);
+  box-shadow: 0 8px 24px rgba(212,168,75,.45);
+}
+.big-btn.gold:hover { box-shadow: 0 14px 32px rgba(212,168,75,.55); }
+
+/* ── RSVP SECTION ── */
+#rsvp {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+#rsvp h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+#rsvp p { color: #7a5c6e; margin-bottom: 28px; font-size:.95rem; }
+
+.rsvp-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 40px 32px;
+  box-shadow: 0 8px 36px rgba(232,116,138,.13);
+  border: 2px solid var(--blush);
+}
+
+.rsvp-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+
+.rsvp-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 20px 16px;
+  border-radius: 18px;
+  border: 3px solid transparent;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+.rsvp-btn.yes {
+  background: var(--blush);
+  color: var(--rose);
+  border-color: var(--rose-light);
+}
+.rsvp-btn.yes:hover, .rsvp-btn.yes.active {
+  background: var(--rose);
+  color: #fff;
+  border-color: var(--rose);
+  transform: scale(1.05);
+}
+.rsvp-btn.no {
+  background: #f3f0f5;
+  color: #7a5c6e;
+  border-color: #e0d8e8;
+}
+.rsvp-btn.no:hover, .rsvp-btn.no.active {
+  background: #c0aacf;
+  color: #fff;
+  border-color: #c0aacf;
+  transform: scale(1.05);
+}
+
+.rsvp-form { display: none; }
+.rsvp-form.visible { display: block; }
+
+.rsvp-form input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #f0e6ee;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .95rem;
+  color: var(--dark);
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color .2s;
+}
+.rsvp-form input:focus { border-color: var(--rose); }
+
+/* ── MENU SECTION ── */
+#menu {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  text-align: center;
+}
+#menu h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+#menu .subtitle { color: #7a5c6e; margin-bottom: 28px; font-size:.95rem; }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+.menu-item {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px 18px;
+  border: 2px solid var(--gold-light);
+  box-shadow: 0 4px 18px rgba(212,168,75,.1);
+}
+.menu-item .cat {
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.menu-item h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: 4px; }
+.menu-item p { font-size: .83rem; color: #9a7a8a; }
+
+/* ── UPLOAD SECTION ── */
+#upload {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  text-align: center;
+}
+#upload h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+#upload p { color: #7a5c6e; margin-bottom: 24px; font-size:.95rem; }
+
 .upload-box {
-  border:2px dashed var(--gold-light); padding:60px 36px;
-  cursor:pointer; transition:all 0.3s; background:var(--warm);
+  background: #fff;
+  border-radius: 24px;
+  border: 3px dashed var(--rose-light);
+  padding: 44px 28px;
+  box-shadow: 0 6px 24px rgba(232,116,138,.1);
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
 }
-.upload-box:hover { border-color:var(--gold); background:rgba(201,169,110,0.05); }
-.upload-icon { font-size:48px; margin-bottom:18px; }
-.upload-title { font-family:'Cinzel',serif; font-size:15px; letter-spacing:3px; color:var(--text); margin-bottom:10px; }
-.upload-sub { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--text-light); margin-bottom:24px; line-height:1.7; }
-.upload-btn {
-  display:inline-block; background:var(--gold); color:#fff;
-  font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px;
-  padding:14px 32px; cursor:pointer; transition:background 0.25s; border:none;
-}
-.upload-btn:hover { background:var(--gold-dark); }
-#file-input { display:none; }
-.preview-grid { margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
-.preview-item {
-  aspect-ratio:1; background:var(--warm); border:1px solid var(--gold-light);
-  overflow:hidden; display:flex; align-items:center; justify-content:center;
-  font-size:11px; color:var(--text-light);
-}
-.preview-item img { width:100%; height:100%; object-fit:cover; }
-.drive-note { margin-top:20px; font-size:11px; color:var(--rose-light); font-style:italic; letter-spacing:1px; }
-.gdrive-btn {
-  display:inline-block; margin-top:16px;
-  border:1px solid var(--gold-light); color:var(--text-light);
-  font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px;
-  padding:13px 28px; text-decoration:none; transition:all 0.25s;
-}
-.gdrive-btn:hover { background:var(--text); color:var(--cream); border-color:var(--text); }
+.upload-box:hover { border-color: var(--rose); background: var(--blush); }
+.upload-box .upload-icon { font-size: 3rem; margin-bottom: 14px; }
+.upload-box h3 { font-size: 1.1rem; color: var(--dark); font-weight: 700; margin-bottom: 6px; }
+.upload-box p { font-size: .88rem; color: #9a7a8a; margin-bottom: 20px; }
 
-/* FOOTER */
-footer { background:var(--text); color:var(--cream); text-align:center; padding:64px 32px; }
-.footer-ring { font-size:28px; margin-bottom:16px; display:block; }
-.footer-names { font-family:'Cinzel',serif; font-size:26px; letter-spacing:6px; color:var(--gold-light); margin-bottom:10px; }
-.footer-date { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:rgba(250,246,240,0.45); letter-spacing:3px; }
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: #c0aacf;
+  font-size: .85rem;
+  z-index: 1;
+  position: relative;
+}
+footer span { color: var(--rose); }
 
-/* REVEAL */
-.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.8s ease,transform 0.8s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
+/* ── ANIMATIONS ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(20deg); }
+  30%  { transform: rotate(-15deg); }
+  45%  { transform: rotate(12deg); }
+  60%  { transform: rotate(-8deg); }
+  75%  { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
 
-/* RESPONSIVE */
-@media(max-width:680px){
-  .nav-link { padding:8px 7px; font-size:9px; letter-spacing:1px; }
-  .families-wrap { grid-template-columns:1fr; }
-  .families-center { flex-direction:row; padding:0 16px 32px; }
-  .vert-line { width:60px; height:1px; }
-  .menu-grid { grid-template-columns:1fr; }
-  .corner { width:70px; height:70px; }
-  .preview-grid { grid-template-columns:repeat(2,1fr); }
+/* ── FLOATING HEARTS ── */
+.hearts {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.heart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.4rem;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  10%  { opacity: .7; }
+  90%  { opacity: .3; }
+  100% { opacity: 0; transform: translateY(-110vh) rotate(360deg); }
+}
+
+/* ── NAV DOTS ── */
+.nav {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+.nav a {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--rose-light);
+  display: block;
+  transition: background .2s, transform .2s;
+}
+.nav a:hover { background: var(--rose); transform: scale(1.4); }
+
+/* Responsive */
+@media(max-width:480px){
+  .hero { padding: 50px 16px 40px; }
+  .rsvp-card { padding: 28px 18px; }
 }
 ```
 
@@ -229,314 +430,241 @@ footer { background:var(--text); color:var(--cream); text-align:center; padding:
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <div class="nav-monogram">E &amp; G</div>
-    <div class="nav-links">
-      <a class="nav-link" href="#hero">Hoş Geldiniz</a>
-      <a class="nav-link" href="#aileler">Aileler</a>
-      <a class="nav-link" href="#anket">Katılım</a>
-      <a class="nav-link" href="#menu">Menü</a>
-      <a class="nav-link" href="#yukle">Fotoğraf</a>
-    </div>
-  </div>
+<!-- Floating hearts -->
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Nav dots -->
+
+<nav class="nav">
+  <a href="#top" title="Giriş"></a>
+  <a href="#sections" title="Detaylar"></a>
+  <a href="#rsvp" title="Katılım"></a>
+  <a href="#menu" title="Menü"></a>
+  <a href="#upload" title="Fotoğraf Yükle"></a>
 </nav>
 
-<!-- HERO -->
+<!-- ──── HERO ──── -->
 
-<section id="hero">
-  <!-- Köşe süslemeleri -->
-  <div class="corner corner-tl">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
-      <circle cx="8" cy="92" r="2" fill="#c9a96e" opacity="0.4"/>
-      <circle cx="92" cy="8" r="2" fill="#c9a96e" opacity="0.4"/>
-    </svg>
+<section class="hero" id="top">
+  <div class="badge">✨ Söz Merasimi ✨</div>
+  <h1><span>Gizem</span></h1>
+  <span class="ampersand">&amp;</span>
+  <h1><span>Egemen</span></h1>
+  <div class="date-pill">📅 9 Mayıs 2026, Cumartesi</div>
+  <div class="ring-emoji">💍</div>
+  <div class="families" style="margin-top:28px;">
+    <strong>Meral &amp; Ersoy Gündüz</strong>'ün kızları <strong>Gizem</strong><br/>
+    <strong>Elnar &amp; İsmail Tutmuş</strong>'un oğulları <strong>Egemen</strong> ile<br/>
+    söz yapacaklar 🥂
   </div>
-  <div class="corner corner-tr">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
-    </svg>
-  </div>
-  <div class="corner corner-bl">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
-    </svg>
-  </div>
-  <div class="corner corner-br">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 8 L8 92" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 8 L92 8" stroke="#c9a96e" stroke-width="1"/>
-      <path d="M8 28 L28 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 48 L48 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <path d="M8 68 L68 8" stroke="#c9a96e" stroke-width="0.6"/>
-      <circle cx="8" cy="8" r="3" fill="#c9a96e"/>
-    </svg>
-  </div>
-
-  <div class="hero-content">
-    <p class="hero-pre">Söz &amp; Nişan Merasimi</p>
-    <h1 class="hero-names">
-      Egemen
-      <span class="amp">&amp;</span>
-      Gizem
-    </h1>
-    <div class="gold-line"></div>
-    <p class="hero-date">9 Mayıs 2026</p>
-    <p class="hero-sub">Sizi aramızda görmekten mutluluk duyarız</p>
-    <span class="ring-anim">💍</span>
-  </div>
-
-  <div class="scroll-hint">
-    <span>Keşfet</span>
-    <div class="scroll-dot"></div>
+  <div style="margin-top:32px;">
+    <a href="#rsvp" class="big-btn">💌 Katılımını Bildir</a>
   </div>
 </section>
 
-<!-- AİLELER -->
+<div class="divider">✦ ✦ ✦</div>
 
-<section id="aileler">
-  <div class="page-section reveal">
-    <div class="section-header">
-      <p class="section-eyebrow">Mutlu Aileler</p>
-      <h2 class="section-title">Aileleriyle Birlikte</h2>
-      <div class="section-divider">
-        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
-      </div>
+<!-- ──── SECTIONS ──── -->
+
+<div class="sections" id="sections">
+
+  <div class="card" onclick="scrollTo('#rsvp')">
+    <div class="icon">🎉</div>
+    <h2>Katılım Anketi</h2>
+    <p>Bizimle kutlamak için geliyor musun? Bize haber ver, seni bekliyoruz!</p>
+    <br/>
+    <a href="#rsvp" class="big-btn" style="font-size:.95rem;padding:14px 28px;">Katılıyor musun? →</a>
+  </div>
+
+  <div class="card" onclick="scrollTo('#menu')">
+    <div class="icon">🍽️</div>
+    <h2>Menü</h2>
+    <p>Özel gece için hazırladığımız lezzetli yemek menüsünü keşfet.</p>
+    <br/>
+    <a href="#menu" class="big-btn gold" style="font-size:.95rem;padding:14px 28px;">Menüye Bak →</a>
+  </div>
+
+  <div class="card" onclick="scrollTo('#upload')">
+    <div class="icon">📸</div>
+    <h2>Fotoğraf &amp; Video</h2>
+    <p>Çektiğin anları bizimle paylaş! Yüklemen yeterli, gerisini biz hallederiz.</p>
+    <br/>
+    <a href="#upload" class="big-btn" style="background:linear-gradient(135deg,#a06cc0,#7b4fa0);font-size:.95rem;padding:14px 28px;box-shadow:0 8px 24px rgba(160,108,192,.4);">Yükle →</a>
+  </div>
+
+</div>
+
+<!-- ──── RSVP ──── -->
+
+<section id="rsvp">
+  <h2>Geliyor musun? 🥳</h2>
+  <p>Seni aramızda görmek isteriz! Lütfen 25 Nisan'a kadar bildir.</p>
+  <div class="rsvp-card">
+    <div class="rsvp-buttons">
+      <button class="rsvp-btn yes" onclick="selectRsvp('yes', this)">
+        ✅ Evet, Geliyorum!
+      </button>
+      <button class="rsvp-btn no" onclick="selectRsvp('no', this)">
+        😢 Gelemiyorum
+      </button>
     </div>
-    <div class="families-wrap">
-      <div class="family-card">
-        <div class="family-label">Damat</div>
-        <div class="family-name">Tutmuş Ailesi</div>
-        <div class="parent-row">
-          <div class="parent-label">Baba</div>
-          <div class="parent-name">İsmail Tutmuş</div>
-        </div>
-        <div class="parent-row">
-          <div class="parent-label">Anne</div>
-          <div class="parent-name">Elnar Tutmuş</div>
-        </div>
-        <div class="family-person">Egemen Tutmuş</div>
-      </div>
-      <div class="families-center">
-        <div class="vert-line"></div>
-        <div class="fam-amp">&amp;</div>
-        <div class="vert-line"></div>
-      </div>
-      <div class="family-card">
-        <div class="family-label">Gelin</div>
-        <div class="family-name">Gündüz Ailesi</div>
-        <div class="parent-row">
-          <div class="parent-label">Baba</div>
-          <div class="parent-name">Ersoy Gündüz</div>
-        </div>
-        <div class="parent-row">
-          <div class="parent-label">Anne</div>
-          <div class="parent-name">Meral Gündüz</div>
-        </div>
-        <div class="family-person">Gizem Gündüz</div>
-      </div>
+    <div class="rsvp-form" id="rsvpForm">
+      <input type="text" id="rsvpName" placeholder="Adın Soyadın" />
+      <input type="number" id="rsvpCount" placeholder="Kaç kişi geleceksiniz?" min="1" max="10"/>
+      <button class="big-btn" style="width:100%;justify-content:center;" onclick="submitRsvp()">
+        Gönder 🎊
+      </button>
+    </div>
+    <div id="rsvpSuccess" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:2.5rem;">🎉</div>
+      <p style="font-weight:700;color:var(--rose);font-size:1.1rem;margin-top:8px;" id="successMsg"></p>
     </div>
   </div>
 </section>
 
-<!-- ANKET -->
-
-<section id="anket">
-  <div class="page-section reveal">
-    <div class="section-header">
-      <p class="section-eyebrow">Katılım Bildirimi</p>
-      <h2 class="section-title">Bize Bildirin</h2>
-      <div class="section-divider">
-        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
-      </div>
-    </div>
-    <p class="anket-intro">
-      9 Mayıs 2026 tarihinde düzenlenecek olan<br/>
-      söz ve nişan merasimimize katılımınızı bekliyoruz.
-    </p>
-    <div class="anket-form" id="anket-form">
-      <div class="anket-field">
-        <label>Adınız Soyadınız</label>
-        <input type="text" id="a-name" placeholder="Adınızı giriniz"/>
-      </div>
-      <div class="anket-field">
-        <label>Telefon (isteğe bağlı)</label>
-        <input type="tel" id="a-phone" placeholder="+90 5__ ___ __ __"/>
-      </div>
-      <div class="anket-field">
-        <label>Kaç kişi katılacaksınız?</label>
-        <input type="number" id="a-count" placeholder="1" min="1" max="10"/>
-      </div>
-      <div class="anket-field">
-        <label>Katılım Durumu</label>
-        <div class="katilim-btns">
-          <button class="katilim-btn yes" id="btn-yes" onclick="selectKatilim('yes')">
-            <span class="btn-icon">🥂</span>Katılıyorum
-          </button>
-          <button class="katilim-btn no" id="btn-no" onclick="selectKatilim('no')">
-            <span class="btn-icon">🙏</span>Katılamıyorum
-          </button>
-        </div>
-        <p class="anket-note">* Yanıtınız yalnızca organizasyon için kullanılacaktır</p>
-      </div>
-      <button class="anket-submit" onclick="submitAnket()">Bildirimi Gönder</button>
-    </div>
-    <div class="anket-success" id="anket-success">
-      <div class="ck">💌</div>
-      <h3>Teşekkürler!</h3>
-      <p>Yanıtınız alındı. Görüşmek üzere! 🥂</p>
-    </div>
-  </div>
-</section>
-
-<!-- MENU -->
+<!-- ──── MENU ──── -->
 
 <section id="menu">
-  <div class="page-section reveal">
-    <div class="section-header">
-      <p class="section-eyebrow">Akşam Yemeği</p>
-      <h2 class="section-title">Menü</h2>
-      <div class="section-divider">
-        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
-      </div>
+  <h2>Akşam Menüsü 🍽️</h2>
+  <p class="subtitle">Özel gecemiz için hazırlanan lezzetler</p>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="cat">Başlangıç</div>
+      <h3>Meze Tabağı</h3>
+      <p>Haydari, ezme, cacık, çiğköfte, dolma</p>
     </div>
-    <div class="menu-grid">
-      <div class="menu-cat">
-        <div class="menu-cat-title">Başlangıçlar</div>
-        <div class="menu-cat-sub">Soğuk &amp; Sıcak</div>
-        <div class="menu-item"><span class="menu-item-name">Karışık Meze Tabağı</span></div>
-        <div class="menu-item"><span class="menu-item-name">Mercimek Çorbası</span></div>
-        <div class="menu-item"><span class="menu-item-name">Peynirli Börek</span></div>
-        <div class="menu-item"><span class="menu-item-name">Zeytinyağlı Yaprak Sarma</span></div>
-      </div>
-      <div class="menu-cat">
-        <div class="menu-cat-title">Ana Yemekler</div>
-        <div class="menu-cat-sub">Izgara &amp; Fırın</div>
-        <div class="menu-item"><span class="menu-item-name">Dana Antrikot</span></div>
-        <div class="menu-item"><span class="menu-item-name">Kuzu Tandır</span></div>
-        <div class="menu-item"><span class="menu-item-name">Tavuk Şiş</span></div>
-        <div class="menu-item"><span class="menu-item-name">Sebzeli Pilav</span></div>
-      </div>
-      <div class="menu-cat">
-        <div class="menu-cat-title">Salatalar</div>
-        <div class="menu-cat-sub">Taze &amp; Mevsim</div>
-        <div class="menu-item"><span class="menu-item-name">Çoban Salatası</span></div>
-        <div class="menu-item"><span class="menu-item-name">Roka &amp; Parmesan</span></div>
-        <div class="menu-item"><span class="menu-item-name">Mevsim Salatası</span></div>
-      </div>
-      <div class="menu-cat">
-        <div class="menu-cat-title">Tatlılar &amp; İçecekler</div>
-        <div class="menu-cat-sub">Tatlı &amp; Serinletici</div>
-        <div class="menu-item"><span class="menu-item-name">Söz Pastası 🎂</span></div>
-        <div class="menu-item"><span class="menu-item-name">Sütlaç</span></div>
-        <div class="menu-item"><span class="menu-item-name">Baklava</span></div>
-        <div class="menu-item"><span class="menu-item-name">Meşrubat &amp; Çay</span></div>
-      </div>
+    <div class="menu-item">
+      <div class="cat">Başlangıç</div>
+      <h3>Çorba</h3>
+      <p>Mercimek çorbası, tereyağlı kruton</p>
     </div>
-    <p class="menu-note">Menü değişiklik gösterebilir · Diyet gereksinimleriniz için lütfen önceden bildiriniz</p>
-  </div>
-</section>
-
-<!-- FOTOĞRAF YÜKLEME -->
-
-<section id="yukle">
-  <div class="page-section reveal">
-    <div class="section-header">
-      <p class="section-eyebrow">Anılarınızı Paylaşın</p>
-      <h2 class="section-title">Fotoğraf &amp; Video</h2>
-      <div class="section-divider">
-        <div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div>
-      </div>
+    <div class="menu-item">
+      <div class="cat">Ana Yemek</div>
+      <h3>Kuzu İncik</h3>
+      <p>Fırında pişirilmiş, sebzeli garnitür</p>
     </div>
-    <div class="upload-area">
-      <div class="upload-box" onclick="document.getElementById('file-input').click()">
-        <div class="upload-icon">📸</div>
-        <div class="upload-title">Fotoğraf &amp; Videoları Yükle</div>
-        <div class="upload-sub">
-          Merasimde çektiğiniz fotoğraf ve videoları<br/>
-          bizimle paylaşın, anılarımızı birlikte saklayalım.
-        </div>
-        <button class="upload-btn" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
-          Dosya Seç
-        </button>
-        <input type="file" id="file-input" multiple accept="image/*,video/*" onchange="handleFiles(event)"/>
-      </div>
-      <div class="preview-grid" id="preview-grid"></div>
-      <p class="drive-note">Fotoğraflarınız Google Drive'a yüklenecektir</p>
-      <!-- Google Drive linkinizi buraya ekleyin -->
-      <a class="gdrive-btn" href="GOOGLE_DRIVE_LINKINI_BURAYA_EKLE" target="_blank">
-        📁 Google Drive'a Git
-      </a>
+    <div class="menu-item">
+      <div class="cat">Ana Yemek</div>
+      <h3>Tavuk Sarma</h3>
+      <p>Fesleğenli sos, pilav üzeri servis</p>
+    </div>
+    <div class="menu-item">
+      <div class="cat">Tatlı</div>
+      <h3>Söz Pastası 💍</h3>
+      <p>Özel tasarım pasta, vanilyalı krem</p>
+    </div>
+    <div class="menu-item">
+      <div class="cat">İçecek</div>
+      <h3>Açık Büfe Bar</h3>
+      <p>Meşrubat, meyve suyu, şampanya ✨</p>
     </div>
   </div>
+  <br/>
+  <p style="color:#9a7a8a;font-size:.85rem;">* Menü değişebilir. Diyet/alerji durumun varsa lütfen belirt.</p>
 </section>
 
-<!-- FOOTER -->
+<!-- ──── UPLOAD ──── -->
+
+<section id="upload">
+  <h2>Anılarını Paylaş 📸</h2>
+  <p>Geceye ait fotoğraf ve videolarını yükle, birlikte saklayalım!</p>
+  <div class="upload-box" onclick="openDrive()">
+    <div class="upload-icon">☁️</div>
+    <h3>Google Drive'a Yükle</h3>
+    <p>Fotoğraf ve videolarını buraya yükle.<br/>Tüm anılar ortak albümde toplanacak.</p>
+    <button class="big-btn" style="background:linear-gradient(135deg,#a06cc0,#7b4fa0);box-shadow:0 8px 24px rgba(160,108,192,.4);font-size:1rem;">
+      📤 Yükle
+    </button>
+  </div>
+  <p style="margin-top:14px;font-size:.82rem;color:#b0a0ba;">
+    Yüklediğin içerikler yalnızca Gizem &amp; Egemen ve aileler tarafından görüntülenecektir.
+  </p>
+</section>
+
+<!-- ──── FOOTER ──── -->
 
 <footer>
-  <span class="footer-ring">💍</span>
-  <div class="footer-names">Egemen &amp; Gizem</div>
-  <div class="footer-date">9 Mayıs 2026 · Söz &amp; Nişan</div>
+  Sevgiyle hazırlandı 💍 <br/>
+  <span>Gizem &amp; Egemen</span> • 9 Mayıs 2026
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 }).observe(...reveals) || reveals.forEach(r =>
-    new IntersectionObserver(([e]) => { if(e.isIntersecting) e.target.classList.add('visible'); }, {threshold:0.1}).observe(r)
-  );
+  /* ── Floating Hearts ── */
+  const heartsEl = document.getElementById('hearts');
+  const emojis = ['💍','💕','🌸','✨','💗','🌷','💖','🥂'];
+  function spawnHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    const dur = 7 + Math.random() * 8;
+    h.style.animationDuration = dur + 's';
+    h.style.animationDelay = Math.random() * 5 + 's';
+    h.style.fontSize = (.9 + Math.random() * 1.2) + 'rem';
+    heartsEl.appendChild(h);
+    setTimeout(() => h.remove(), (dur + 5) * 1000);
+  }
+  setInterval(spawnHeart, 900);
+  for(let i=0;i<8;i++) setTimeout(spawnHeart, i*300);
 
-  // Katılım seçimi
-  let katilim = null;
-  function selectKatilim(v) {
-    katilim = v;
-    document.getElementById('btn-yes').classList.toggle('selected', v === 'yes');
-    document.getElementById('btn-no').classList.toggle('selected', v === 'no');
+  /* ── RSVP Logic ── */
+  function selectRsvp(choice, btn) {
+    document.querySelectorAll('.rsvp-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const form = document.getElementById('rsvpForm');
+    if(choice === 'yes') {
+      form.classList.add('visible');
+    } else {
+      form.classList.remove('visible');
+      // Show no-message
+      document.getElementById('rsvpSuccess').style.display = 'block';
+      document.getElementById('successMsg').textContent = 'Üzüldük 😢 Umarız başka zaman görüşürüz!';
+      document.getElementById('successMsg').style.color = '#c0aacf';
+    }
   }
 
-  // Anket gönder
-  function submitAnket() {
-    const name = document.getElementById('a-name').value.trim();
-    if (!name) { alert('Lütfen adınızı giriniz.'); return; }
-    if (!katilim) { alert('Lütfen katılım durumunuzu seçiniz.'); return; }
-    document.getElementById('anket-form').style.display = 'none';
-    document.getElementById('anket-success').style.display = 'block';
+  function submitRsvp() {
+    const name = document.getElementById('rsvpName').value.trim();
+    const count = document.getElementById('rsvpCount').value || 1;
+    if(!name) { alert('Lütfen adını yaz! 😊'); return; }
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpSuccess').style.display = 'block';
+    document.getElementById('successMsg').textContent =
+      `Harika! ${name}, ${count} kişilik yeriniz ayrıldı 🎊`;
+    document.getElementById('successMsg').style.color = 'var(--rose)';
+    // Burst hearts
+    for(let i=0;i<15;i++) setTimeout(spawnHeart, i*80);
   }
 
-  // Fotoğraf önizleme
-  function handleFiles(e) {
-    const grid = document.getElementById('preview-grid');
-    Array.from(e.target.files).forEach(file => {
-      const div = document.createElement('div');
-      div.className = 'preview-item';
-      if (file.type.startsWith('image/')) {
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        div.appendChild(img);
-      } else {
-        div.textContent = '🎬 ' + file.name.substring(0, 14);
+  /* ── Drive Upload (placeholder) ── */
+  function openDrive() {
+    // Replace the URL below with your actual Google Drive shared folder link
+    const driveUrl = 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID';
+    window.open(driveUrl, '_blank');
+  }
+
+  /* ── Smooth scroll helper ── */
+  function scrollTo(sel) {
+    document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
+  }
+
+  /* ── Scroll-reveal ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
       }
-      grid.appendChild(div);
     });
-  }
+  }, {threshold: 0.12});
+
+  document.querySelectorAll('.card, .rsvp-card, .menu-item, .upload-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
 </script>
 
 </body>
