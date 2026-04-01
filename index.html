@@ -126,9 +126,18 @@
 <h2 class="text-4xl font-serif text-on-surface">MoonGarden</h2>
 </div>
 <div class="rounded-xl overflow-hidden shadow-lg bg-surface-container-lowest">
+<!-- Google Maps Embed -->
 <div class="h-64 relative">
-<img alt="MoonGarden Venue Location" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugko5D-FmPCp7V56ioKR0d1LTv4Zc4QOdf0YB8dD-Rxl90JZdewP1dOE8F5-v07v-Wz6FdSo68IUmm-KsrlUYr3GM44q8p--fCHttwg8PCiKYkHrb2kXk9FdEixF7H63RE8aDxJpV2ifjrqzapA6WSHR-C5o_6f4EBzqDtF--6U3jFY84oOaO81MOCuWjgy20XMZ3uD8XE9xrPrd8QRocj5iYn-pGiGzzraZGrMm6D4LuBKE-fI34ZSB9vGrxOz8jcSltucg6Sm3yM"/>
-<div class="absolute inset-0 ring-1 ring-inset ring-black/10"></div>
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.0!2d28.7219!3d40.9801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4b2b2b2b2b3%3A0x1!2sMoonGarden%20-%20Denizk%C3%B6%C5%9Fkler%2C%20Dr.%20Sad%C4%B1k%20Ahmet%20Cd.%20No%3A43%2C%2034420%20Avc%C4%B1lar%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1"
+  width="100%"
+  height="100%"
+  style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="MoonGarden Konum">
+</iframe>
 </div>
 <div class="p-8 space-y-6 text-center">
 <div class="space-y-2">
@@ -137,10 +146,14 @@
                                 Denizköşkler, Dr. Sadık Ahmet Cd. No:43, 34420 Avcılar/İstanbul
                             </p>
 </div>
-<a class="block w-full py-4 px-8 rounded-full bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2" href="#">
+<a
+  class="block w-full py-4 px-8 rounded-full bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"
+  href="https://www.google.com/maps/search/MoonGarden+Denizköşkler,+Dr.+Sadık+Ahmet+Cd.+No:43,+34420+Avcılar/İstanbul"
+  target="_blank"
+  rel="noopener noreferrer">
 <span class="material-symbols-outlined text-xl" data-icon="map">map</span>
-                            Haritada Görüntüle
-                        </a>
+  Haritada Görüntüle
+</a>
 </div>
 </div>
 </div>
@@ -148,42 +161,27 @@
 <!-- 3. Participation Form Section -->
 <section class="px-6 py-20 bg-surface" id="katilim-formu">
 <div class="max-w-md mx-auto">
-<div class="bg-surface-container-highest rounded-xl p-10 space-y-8 relative overflow-hidden">
+<div class="bg-surface-container-highest rounded-xl p-6 space-y-8 relative overflow-hidden">
 <!-- Decorative Background element -->
 <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
 <div class="relative space-y-2 text-center">
 <span class="text-xs uppercase tracking-widest font-bold text-primary">Lütfen Cevaplayınız</span>
 <h2 class="text-4xl font-serif text-on-surface">Katılım Formu</h2>
 </div>
-<form class="relative space-y-8">
-<div class="space-y-6">
-<div class="group">
-<label class="block text-xs font-bold uppercase tracking-tighter text-on-surface-variant mb-2 ml-1">İsim Soyisim</label>
-<input class="w-full bg-white border-none rounded-full px-6 py-4 text-on-surface shadow-sm focus:ring-2 focus:ring-primary placeholder:text-zinc-400" placeholder="Adınız ve Soyadınız" type="text"/>
+<!-- Google Form iframe -->
+<div class="relative w-full rounded-xl overflow-hidden" style="min-height: 520px;">
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdFXNjGcY9TgU6hZ4fjwhUbsLYsK8S9rwaG6Tr3m9Qo2_nQYA/viewform?embedded=true"
+    width="100%"
+    height="520"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    style="border-radius: 12px; display: block;"
+    title="Katılım Formu">
+    Yükleniyor…
+  </iframe>
 </div>
-<div class="group">
-<label class="block text-xs font-bold uppercase tracking-tighter text-on-surface-variant mb-2 ml-1">Kişi Sayısı</label>
-<div class="relative">
-<select class="w-full bg-white border-none rounded-full px-6 py-4 appearance-none text-on-surface shadow-sm focus:ring-2 focus:ring-primary">
-<option>1 Kişi</option>
-<option>2 Kişi</option>
-<option>3 Kişi</option>
-<option>4 Kişi</option>
-<option>5+ Kişi</option>
-</select>
-<span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</div>
-<div class="space-y-4 pt-4">
-<button class="w-full py-5 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary font-extrabold text-lg shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all" type="submit">
-                                Geleceğim!
-                            </button>
-<button class="w-full py-5 rounded-full border-2 border-primary/20 text-primary font-bold text-lg hover:bg-primary/5 transition-colors" type="button">
-                                Katılamayacağım
-                            </button>
-</div>
-</form>
 </div>
 <div class="mt-20 text-center space-y-4 pb-10">
 <p class="font-serif italic text-2xl text-rose-800/60">G &amp; E</p>
