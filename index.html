@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizem & Egemen - İsteme, Söz, Nişan</title>
+    
+    <!-- Google Fonts: Zarif serif (Playfair Display) ve temiz sans-serif (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS Dosyamız -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glass-container">
+        
+        <!-- Üst çiçeksi/süsleme ikonu (SVG) -->
+        <div class="ornament">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+        </div>
+
+        <h1>İsteme, Söz ve Nişan Merasimimize Hoşgeldiniz</h1>
+
+        <div class="couple-names">
+            Gizem <span>&</span> Egemen
+        </div>
+
+        <div class="photo-frame">
+            <!-- Buraya kendi fotoğrafınızı koyabilirsiniz. Şimdilik romantik bir yer tutucu görsel -->
+            <img id="couple-photo" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gizem ve Egemen">
+        </div>
+
+        <div class="details-section">
+            <div class="families">
+                <p><strong>Gündüz Ailesi</strong><br>Meral & Ersoy</p>
+                <div class="heart-icon">♥</div>
+                <p><strong>Tutmuş Ailesi</strong><br>Elnar & İsmail</p>
+            </div>
+
+            <div class="event-info">
+                <p class="date">9 Mayıs 2026</p>
+                <p class="venue"><strong>MOON GARDEN</strong></p>
+                <p class="address">Denizköşkler, Dr. Sadık Ahmet Cd. No:43,<br>34420 Avcılar/İstanbul</p>
+            </div>
+        </div>
+
+        <!-- Upload Bölümü -->
+        <div class="upload-section">
+            <h3>Bizimle Anılarınızı Paylaşın</h3>
+            <p>Bugün ile ilgili çektiğiniz fotoğraf ve videoları bize göndererek bu özel günümüzü ölümsüzleştirmemize yardımcı olun.</p>
+            
+            <form id="uploadForm">
+                <label for="nameInput">İsminiz (İsteğe Bağlı)</label>
+                <input type="text" id="nameInput" placeholder="Adınız Soyadınız">
+                
+                <div class="file-drop-area">
+                    <span class="fake-btn">Fotoğraf/Video Seç</span>
+                    <span class="file-msg">veya dosyayı buraya sürükleyin</span>
+                    <input class="file-input" type="file" id="fileInput" accept="image/*,video/*" multiple>
+                </div>
+
+                <button type="submit" id="submitBtn" class="upload-btn" disabled>Gönder</button>
+            </form>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Dosyalarınız yükleniyor, lütfen bekleyin...</p>
+            </div>
+
+            <div id="successMessage" class="hidden">
+                <div class="check-icon">✓</div>
+                <p>Yüklendi! Teşekkür ederiz.</p>
+            </div>
+            
+            <div id="errorMessage" class="hidden">
+                <p>Bir hata oluştu. Lütfen tekrar deneyin.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS Dosyamız -->
+    <script src="script.js"></script>
+</body>
+</html>
