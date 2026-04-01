@@ -1,671 +1,170 @@
 <!DOCTYPE html>
 
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gizem & Egemen — Söz 💍</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --rose: #e8748a;
-      --rose-light: #f7c5d0;
-      --gold: #d4a84b;
-      --gold-light: #f9e9c3;
-      --cream: #fff8f0;
-      --dark: #2d1a2e;
-      --blush: #fde8ee;
-    }
-
-```
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--cream);
-  color: var(--dark);
-  overflow-x: hidden;
-}
-
-/* ── CONFETTI BG ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 15% 20%, rgba(232,116,138,.15) 0 60px, transparent 60px),
-    radial-gradient(circle at 85% 80%, rgba(212,168,75,.15) 0 80px, transparent 80px),
-    radial-gradient(circle at 50% 50%, rgba(253,232,238,.4) 0 200px, transparent 200px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── HERO ── */
-.hero {
-  position: relative;
-  text-align: center;
-  padding: 70px 20px 60px;
-  z-index: 1;
-}
-
-.hero .badge {
-  display: inline-block;
-  background: var(--gold);
-  color: #fff;
-  font-weight: 900;
-  font-size: .8rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 6px 20px;
-  border-radius: 99px;
-  margin-bottom: 20px;
-  animation: popIn .6s cubic-bezier(.36,1.6,.32,1) both;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  line-height: 1.1;
-  color: var(--dark);
-  animation: slideUp .8s .1s cubic-bezier(.36,1.6,.32,1) both;
-}
-
-.hero h1 span { color: var(--rose); font-style: italic; }
-
-.hero .ampersand {
-  display: block;
-  font-size: clamp(3rem, 10vw, 7rem);
-  color: var(--gold);
-  line-height: 1;
-  animation: slideUp .8s .2s cubic-bezier(.36,1.6,.32,1) both;
-}
-
-.hero .date-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--blush);
-  border: 2px solid var(--rose-light);
-  border-radius: 99px;
-  padding: 10px 28px;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--rose);
-  margin-top: 24px;
-  animation: slideUp .8s .35s cubic-bezier(.36,1.6,.32,1) both;
-}
-
-.hero .families {
-  margin-top: 28px;
-  font-size: .95rem;
-  color: #7a5c6e;
-  animation: slideUp .8s .45s cubic-bezier(.36,1.6,.32,1) both;
-  line-height: 2;
-}
-
-.hero .families strong { color: var(--dark); }
-
-.ring-emoji {
-  font-size: 2.2rem;
-  display: block;
-  margin: 18px auto 0;
-  animation: spin 3s linear infinite, slideUp .8s .5s both;
-}
-
-/* ── DIVIDER ── */
-.divider {
-  text-align: center;
-  font-size: 1.4rem;
-  letter-spacing: 8px;
-  color: var(--rose-light);
-  margin: 10px 0;
-}
-
-/* ── SECTIONS GRID ── */
-.sections {
-  position: relative;
-  z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px 20px 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-/* ── CARD ── */
-.card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 36px 28px;
-  box-shadow: 0 6px 30px rgba(232,116,138,.12);
-  border: 2px solid transparent;
-  transition: transform .25s, box-shadow .25s, border-color .25s;
-  cursor: pointer;
-  text-align: center;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(232,116,138,.22);
-  border-color: var(--rose-light);
-}
-
-.card .icon { font-size: 2.6rem; margin-bottom: 14px; }
-.card h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--dark);
-  margin-bottom: 10px;
-}
-.card p {
-  font-size: .92rem;
-  color: #7a5c6e;
-  line-height: 1.7;
-}
-
-/* ── BIG BUTTON ── */
-.big-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: linear-gradient(135deg, var(--rose), #c94d6a);
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 1.15rem;
-  border: none;
-  border-radius: 99px;
-  padding: 18px 36px;
-  cursor: pointer;
-  margin: 8px auto 0;
-  width: fit-content;
-  box-shadow: 0 8px 24px rgba(232,116,138,.45);
-  transition: transform .2s, box-shadow .2s;
-  text-decoration: none;
-}
-.big-btn:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 14px 32px rgba(232,116,138,.5);
-}
-.big-btn.gold {
-  background: linear-gradient(135deg, var(--gold), #b8892e);
-  box-shadow: 0 8px 24px rgba(212,168,75,.45);
-}
-.big-btn.gold:hover { box-shadow: 0 14px 32px rgba(212,168,75,.55); }
-
-/* ── RSVP SECTION ── */
-#rsvp {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-  margin: 0 auto 50px;
-  padding: 0 20px;
-  text-align: center;
-}
-
-#rsvp h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--dark);
-  margin-bottom: 8px;
-}
-#rsvp p { color: #7a5c6e; margin-bottom: 28px; font-size:.95rem; }
-
-.rsvp-card {
-  background: #fff;
-  border-radius: 28px;
-  padding: 40px 32px;
-  box-shadow: 0 8px 36px rgba(232,116,138,.13);
-  border: 2px solid var(--blush);
-}
-
-.rsvp-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
-
-.rsvp-btn {
-  flex: 1;
-  min-width: 140px;
-  padding: 20px 16px;
-  border-radius: 18px;
-  border: 3px solid transparent;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 900;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all .2s;
-}
-.rsvp-btn.yes {
-  background: var(--blush);
-  color: var(--rose);
-  border-color: var(--rose-light);
-}
-.rsvp-btn.yes:hover, .rsvp-btn.yes.active {
-  background: var(--rose);
-  color: #fff;
-  border-color: var(--rose);
-  transform: scale(1.05);
-}
-.rsvp-btn.no {
-  background: #f3f0f5;
-  color: #7a5c6e;
-  border-color: #e0d8e8;
-}
-.rsvp-btn.no:hover, .rsvp-btn.no.active {
-  background: #c0aacf;
-  color: #fff;
-  border-color: #c0aacf;
-  transform: scale(1.05);
-}
-
-.rsvp-form { display: none; }
-.rsvp-form.visible { display: block; }
-
-.rsvp-form input {
-  width: 100%;
-  padding: 14px 18px;
-  border: 2px solid #f0e6ee;
-  border-radius: 14px;
-  font-family: 'Nunito', sans-serif;
-  font-size: .95rem;
-  color: var(--dark);
-  margin-bottom: 14px;
-  outline: none;
-  transition: border-color .2s;
-}
-.rsvp-form input:focus { border-color: var(--rose); }
-
-/* ── MENU SECTION ── */
-#menu {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  padding: 0 20px;
-  text-align: center;
-}
-#menu h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--dark);
-  margin-bottom: 6px;
-}
-#menu .subtitle { color: #7a5c6e; margin-bottom: 28px; font-size:.95rem; }
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  text-align: left;
-}
-.menu-item {
-  background: #fff;
-  border-radius: 18px;
-  padding: 20px 18px;
-  border: 2px solid var(--gold-light);
-  box-shadow: 0 4px 18px rgba(212,168,75,.1);
-}
-.menu-item .cat {
-  font-size: .72rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-.menu-item h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: 4px; }
-.menu-item p { font-size: .83rem; color: #9a7a8a; }
-
-/* ── UPLOAD SECTION ── */
-#upload {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
-  text-align: center;
-}
-#upload h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--dark);
-  margin-bottom: 6px;
-}
-#upload p { color: #7a5c6e; margin-bottom: 24px; font-size:.95rem; }
-
-.upload-box {
-  background: #fff;
-  border-radius: 24px;
-  border: 3px dashed var(--rose-light);
-  padding: 44px 28px;
-  box-shadow: 0 6px 24px rgba(232,116,138,.1);
-  transition: border-color .2s, background .2s;
-  cursor: pointer;
-}
-.upload-box:hover { border-color: var(--rose); background: var(--blush); }
-.upload-box .upload-icon { font-size: 3rem; margin-bottom: 14px; }
-.upload-box h3 { font-size: 1.1rem; color: var(--dark); font-weight: 700; margin-bottom: 6px; }
-.upload-box p { font-size: .88rem; color: #9a7a8a; margin-bottom: 20px; }
-
-/* ── FOOTER ── */
-footer {
-  text-align: center;
-  padding: 30px 20px 40px;
-  color: #c0aacf;
-  font-size: .85rem;
-  z-index: 1;
-  position: relative;
-}
-footer span { color: var(--rose); }
-
-/* ── ANIMATIONS ── */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes popIn {
-  from { opacity: 0; transform: scale(.6); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes spin {
-  0%   { transform: rotate(0deg); }
-  15%  { transform: rotate(20deg); }
-  30%  { transform: rotate(-15deg); }
-  45%  { transform: rotate(12deg); }
-  60%  { transform: rotate(-8deg); }
-  75%  { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* ── FLOATING HEARTS ── */
-.hearts {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.heart {
-  position: absolute;
-  bottom: -60px;
-  font-size: 1.4rem;
-  animation: floatUp linear infinite;
-  opacity: 0;
-}
-@keyframes floatUp {
-  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
-  10%  { opacity: .7; }
-  90%  { opacity: .3; }
-  100% { opacity: 0; transform: translateY(-110vh) rotate(360deg); }
-}
-
-/* ── NAV DOTS ── */
-.nav {
-  position: fixed;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 100;
-}
-.nav a {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--rose-light);
-  display: block;
-  transition: background .2s, transform .2s;
-}
-.nav a:hover { background: var(--rose); transform: scale(1.4); }
-
-/* Responsive */
-@media(max-width:480px){
-  .hero { padding: 50px 16px 40px; }
-  .rsvp-card { padding: 28px 18px; }
-}
-```
-
-  </style>
-</head>
-<body>
-
-<!-- Floating hearts -->
-
-<div class="hearts" id="hearts"></div>
-
-<!-- Nav dots -->
-
-<nav class="nav">
-  <a href="#top" title="Giriş"></a>
-  <a href="#sections" title="Detaylar"></a>
-  <a href="#rsvp" title="Katılım"></a>
-  <a href="#menu" title="Menü"></a>
-  <a href="#upload" title="Fotoğraf Yükle"></a>
-</nav>
-
-<!-- ──── HERO ──── -->
-
-<section class="hero" id="top">
-  <div class="badge">✨ Söz Merasimi ✨</div>
-  <h1><span>Gizem</span></h1>
-  <span class="ampersand">&amp;</span>
-  <h1><span>Egemen</span></h1>
-  <div class="date-pill">📅 9 Mayıs 2026, Cumartesi</div>
-  <div class="ring-emoji">💍</div>
-  <div class="families" style="margin-top:28px;">
-    <strong>Meral &amp; Ersoy Gündüz</strong>'ün kızları <strong>Gizem</strong><br/>
-    <strong>Elnar &amp; İsmail Tutmuş</strong>'un oğulları <strong>Egemen</strong> ile<br/>
-    söz yapacaklar 🥂
-  </div>
-  <div style="margin-top:32px;">
-    <a href="#rsvp" class="big-btn">💌 Katılımını Bildir</a>
-  </div>
-</section>
-
-<div class="divider">✦ ✦ ✦</div>
-
-<!-- ──── SECTIONS ──── -->
-
-<div class="sections" id="sections">
-
-  <div class="card" onclick="scrollTo('#rsvp')">
-    <div class="icon">🎉</div>
-    <h2>Katılım Anketi</h2>
-    <p>Bizimle kutlamak için geliyor musun? Bize haber ver, seni bekliyoruz!</p>
-    <br/>
-    <a href="#rsvp" class="big-btn" style="font-size:.95rem;padding:14px 28px;">Katılıyor musun? →</a>
-  </div>
-
-  <div class="card" onclick="scrollTo('#menu')">
-    <div class="icon">🍽️</div>
-    <h2>Menü</h2>
-    <p>Özel gece için hazırladığımız lezzetli yemek menüsünü keşfet.</p>
-    <br/>
-    <a href="#menu" class="big-btn gold" style="font-size:.95rem;padding:14px 28px;">Menüye Bak →</a>
-  </div>
-
-  <div class="card" onclick="scrollTo('#upload')">
-    <div class="icon">📸</div>
-    <h2>Fotoğraf &amp; Video</h2>
-    <p>Çektiğin anları bizimle paylaş! Yüklemen yeterli, gerisini biz hallederiz.</p>
-    <br/>
-    <a href="#upload" class="big-btn" style="background:linear-gradient(135deg,#a06cc0,#7b4fa0);font-size:.95rem;padding:14px 28px;box-shadow:0 8px 24px rgba(160,108,192,.4);">Yükle →</a>
-  </div>
-
-</div>
-
-<!-- ──── RSVP ──── -->
-
-<section id="rsvp">
-  <h2>Geliyor musun? 🥳</h2>
-  <p>Seni aramızda görmek isteriz! Lütfen 25 Nisan'a kadar bildir.</p>
-  <div class="rsvp-card">
-    <div class="rsvp-buttons">
-      <button class="rsvp-btn yes" onclick="selectRsvp('yes', this)">
-        ✅ Evet, Geliyorum!
-      </button>
-      <button class="rsvp-btn no" onclick="selectRsvp('no', this)">
-        😢 Gelemiyorum
-      </button>
-    </div>
-    <div class="rsvp-form" id="rsvpForm">
-      <input type="text" id="rsvpName" placeholder="Adın Soyadın" />
-      <input type="number" id="rsvpCount" placeholder="Kaç kişi geleceksiniz?" min="1" max="10"/>
-      <button class="big-btn" style="width:100%;justify-content:center;" onclick="submitRsvp()">
-        Gönder 🎊
-      </button>
-    </div>
-    <div id="rsvpSuccess" style="display:none;text-align:center;padding:10px 0;">
-      <div style="font-size:2.5rem;">🎉</div>
-      <p style="font-weight:700;color:var(--rose);font-size:1.1rem;margin-top:8px;" id="successMsg"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ──── MENU ──── -->
-
-<section id="menu">
-  <h2>Akşam Menüsü 🍽️</h2>
-  <p class="subtitle">Özel gecemiz için hazırlanan lezzetler</p>
-  <div class="menu-grid">
-    <div class="menu-item">
-      <div class="cat">Başlangıç</div>
-      <h3>Meze Tabağı</h3>
-      <p>Haydari, ezme, cacık, çiğköfte, dolma</p>
-    </div>
-    <div class="menu-item">
-      <div class="cat">Başlangıç</div>
-      <h3>Çorba</h3>
-      <p>Mercimek çorbası, tereyağlı kruton</p>
-    </div>
-    <div class="menu-item">
-      <div class="cat">Ana Yemek</div>
-      <h3>Kuzu İncik</h3>
-      <p>Fırında pişirilmiş, sebzeli garnitür</p>
-    </div>
-    <div class="menu-item">
-      <div class="cat">Ana Yemek</div>
-      <h3>Tavuk Sarma</h3>
-      <p>Fesleğenli sos, pilav üzeri servis</p>
-    </div>
-    <div class="menu-item">
-      <div class="cat">Tatlı</div>
-      <h3>Söz Pastası 💍</h3>
-      <p>Özel tasarım pasta, vanilyalı krem</p>
-    </div>
-    <div class="menu-item">
-      <div class="cat">İçecek</div>
-      <h3>Açık Büfe Bar</h3>
-      <p>Meşrubat, meyve suyu, şampanya ✨</p>
-    </div>
-  </div>
-  <br/>
-  <p style="color:#9a7a8a;font-size:.85rem;">* Menü değişebilir. Diyet/alerji durumun varsa lütfen belirt.</p>
-</section>
-
-<!-- ──── UPLOAD ──── -->
-
-<section id="upload">
-  <h2>Anılarını Paylaş 📸</h2>
-  <p>Geceye ait fotoğraf ve videolarını yükle, birlikte saklayalım!</p>
-  <div class="upload-box" onclick="openDrive()">
-    <div class="upload-icon">☁️</div>
-    <h3>Google Drive'a Yükle</h3>
-    <p>Fotoğraf ve videolarını buraya yükle.<br/>Tüm anılar ortak albümde toplanacak.</p>
-    <button class="big-btn" style="background:linear-gradient(135deg,#a06cc0,#7b4fa0);box-shadow:0 8px 24px rgba(160,108,192,.4);font-size:1rem;">
-      📤 Yükle
-    </button>
-  </div>
-  <p style="margin-top:14px;font-size:.82rem;color:#b0a0ba;">
-    Yüklediğin içerikler yalnızca Gizem &amp; Egemen ve aileler tarafından görüntülenecektir.
-  </p>
-</section>
-
-<!-- ──── FOOTER ──── -->
-
-<footer>
-  Sevgiyle hazırlandı 💍 <br/>
-  <span>Gizem &amp; Egemen</span> • 9 Mayıs 2026
-</footer>
-
-<script>
-  /* ── Floating Hearts ── */
-  const heartsEl = document.getElementById('hearts');
-  const emojis = ['💍','💕','🌸','✨','💗','🌷','💖','🥂'];
-  function spawnHeart() {
-    const h = document.createElement('div');
-    h.className = 'heart';
-    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    h.style.left = Math.random() * 100 + 'vw';
-    const dur = 7 + Math.random() * 8;
-    h.style.animationDuration = dur + 's';
-    h.style.animationDelay = Math.random() * 5 + 's';
-    h.style.fontSize = (.9 + Math.random() * 1.2) + 'rem';
-    heartsEl.appendChild(h);
-    setTimeout(() => h.remove(), (dur + 5) * 1000);
-  }
-  setInterval(spawnHeart, 900);
-  for(let i=0;i<8;i++) setTimeout(spawnHeart, i*300);
-
-  /* ── RSVP Logic ── */
-  function selectRsvp(choice, btn) {
-    document.querySelectorAll('.rsvp-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const form = document.getElementById('rsvpForm');
-    if(choice === 'yes') {
-      form.classList.add('visible');
-    } else {
-      form.classList.remove('visible');
-      // Show no-message
-      document.getElementById('rsvpSuccess').style.display = 'block';
-      document.getElementById('successMsg').textContent = 'Üzüldük 😢 Umarız başka zaman görüşürüz!';
-      document.getElementById('successMsg').style.color = '#c0aacf';
-    }
-  }
-
-  function submitRsvp() {
-    const name = document.getElementById('rsvpName').value.trim();
-    const count = document.getElementById('rsvpCount').value || 1;
-    if(!name) { alert('Lütfen adını yaz! 😊'); return; }
-    document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('rsvpSuccess').style.display = 'block';
-    document.getElementById('successMsg').textContent =
-      `Harika! ${name}, ${count} kişilik yeriniz ayrıldı 🎊`;
-    document.getElementById('successMsg').style.color = 'var(--rose)';
-    // Burst hearts
-    for(let i=0;i<15;i++) setTimeout(spawnHeart, i*80);
-  }
-
-  /* ── Drive Upload (placeholder) ── */
-  function openDrive() {
-    // Replace the URL below with your actual Google Drive shared folder link
-    const driveUrl = 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID';
-    window.open(driveUrl, '_blank');
-  }
-
-  /* ── Smooth scroll helper ── */
-  function scrollTo(sel) {
-    document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
-  }
-
-  /* ── Scroll-reveal ── */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#efc900",
+              "outline": "#757777",
+              "secondary-container": "#ffd709",
+              "background": "#f6f6f6",
+              "inverse-on-surface": "#9c9d9d",
+              "inverse-surface": "#0c0f0f",
+              "on-error": "#ffefef",
+              "on-tertiary": "#fff2cd",
+              "tertiary-fixed-dim": "#efc900",
+              "error-dim": "#a70138",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-dim": "#5e4e00",
+              "on-tertiary-fixed": "#453900",
+              "outline-variant": "#acadad",
+              "surface-variant": "#dbdddd",
+              "surface-container-low": "#f0f1f1",
+              "secondary-fixed": "#ffd709",
+              "error": "#b41340",
+              "on-secondary": "#fff2cd",
+              "secondary-dim": "#5e4e00",
+              "surface": "#f6f6f6",
+              "surface-container-high": "#e1e3e3",
+              "surface-tint": "#b50058",
+              "on-secondary-container": "#5b4b00",
+              "primary-container": "#ff709e",
+              "on-primary-container": "#4c0021",
+              "surface-bright": "#f6f6f6",
+              "on-background": "#2d2f2f",
+              "on-primary-fixed": "#000000",
+              "on-primary-fixed-variant": "#5d002a",
+              "on-primary": "#ffeff1",
+              "tertiary": "#6c5a00",
+              "inverse-primary": "#ff4a8d",
+              "error-container": "#f74b6d",
+              "surface-dim": "#d2d5d5",
+              "on-tertiary-fixed-variant": "#665500",
+              "on-surface-variant": "#5a5c5c",
+              "primary-fixed": "#ff709e",
+              "secondary": "#6c5a00",
+              "on-error-container": "#510017",
+              "primary-fixed-dim": "#ff5290",
+              "tertiary-fixed": "#ffd709",
+              "surface-container-highest": "#dbdddd",
+              "on-tertiary-container": "#5b4b00",
+              "on-secondary-fixed-variant": "#665500",
+              "primary": "#b50058",
+              "primary-dim": "#9f004d",
+              "surface-container": "#e7e8e8",
+              "on-surface": "#2d2f2f",
+              "on-secondary-fixed": "#453900",
+              "tertiary-container": "#ffd709"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
       }
-    });
-  }, {threshold: 0.12});
-
-  document.querySelectorAll('.card, .rsvp-card, .menu-item, .upload-box').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(28px)';
-    el.style.transition = 'opacity .6s ease, transform .6s ease';
-    observer.observe(el);
-  });
-</script>
-
-</body>
-</html>
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; height: 100vh; overflow: hidden; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-white/70 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-fuchsia-600" data-icon="favorite">favorite</span>
+</div>
+<h1 class="font-serif text-xl font-bold tracking-tight text-fuchsia-700">Gizem &amp; Egemen</h1>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-fuchsia-600" data-icon="celebration">celebration</span>
+</div>
+</nav>
+<!-- Main Content Canvas (Optimized for no-scroll on iPhone) -->
+<main class="h-screen pt-16 pb-24 px-4 flex flex-col justify-center items-center">
+<!-- The "Modern Gala" Card Container -->
+<div class="w-full max-w-md bg-surface-container-lowest rounded-lg p-6 shadow-[0px_20px_40px_rgba(181,0,88,0.08)] flex flex-col gap-4 relative overflow-hidden">
+<!-- Abstract Graphic / Subtle Ring Image -->
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-secondary-container to-primary-container opacity-20 rounded-full blur-xl"></div>
+<header class="text-center space-y-1">
+<p class="font-label text-xs font-bold tracking-[0.2em] text-secondary uppercase">İsteme, Söz ve Nişan</p>
+<h2 class="font-headline text-2xl font-bold text-primary leading-tight">Gizem &amp; Egemen</h2>
+<p class="font-body text-sm text-on-surface-variant font-semibold">Gündüz &amp; Tutmuş Aileleri</p>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full mt-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="font-label text-sm font-bold text-on-surface">9 Mayıs 2026</span>
+</div>
+</header>
+<!-- Small Cropped Image for Context -->
+<div class="w-full h-24 rounded-lg overflow-hidden">
+<img alt="Gold wedding rings on silk" class="w-full h-full object-cover grayscale-[0.2] sepia-[0.1]" data-alt="Close-up of two elegant gold wedding bands resting on a luxurious ivory silk fabric with soft dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY5yfaT4zCAUiDQQNVCb544gJvIiBZkBRNVJLLSoDeeoievLBMrJCl6SLsjye4UoR2ACZxHqjQlrzECxF0asag2ipcAckX6HKw_kUPGo8pCQMJeE8sbt49mc0PB04DZYFfFudDxUdwe_wQOcqgLILQGZSDycaiRHeCUQBnQIpx4xeVgKcXvU_C3G1veh9oGFlkptmeTUujGCcWFxEklIT_ni8L58U40SKn9IB1jhVO5rD68dS-33kRhSzx64MV3IAMsDNY_GKOwS4x"/>
+</div>
+<!-- Interaction Form -->
+<div class="space-y-4">
+<div class="relative">
+<label class="absolute -top-2 left-3 bg-surface-container-lowest px-1 text-[10px] font-bold text-primary z-10 uppercase tracking-wider">Adınız Soyadınız</label>
+<input class="w-full h-14 bg-surface-container-high border-none rounded-md px-4 pt-2 font-body text-base focus:ring-2 focus:ring-secondary-fixed transition-all placeholder:text-zinc-400" placeholder="Örn: Ahmet Yılmaz" type="text"/>
+</div>
+<div class="relative">
+<label class="absolute -top-2 left-3 bg-surface-container-lowest px-1 text-[10px] font-bold text-primary z-10 uppercase tracking-wider">Kişi Sayısı</label>
+<select class="w-full h-14 bg-surface-container-high border-none rounded-md px-4 pt-2 font-body text-base focus:ring-2 focus:ring-secondary-fixed appearance-none">
+<option>1 Kişi</option>
+<option>2 Kişi</option>
+<option>3 Kişi</option>
+<option>4+ Kişi</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-4 pointer-events-none text-zinc-400" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Primary Action Pair -->
+<div class="grid grid-cols-2 gap-3 h-14">
+<button class="bg-gradient-to-br from-fuchsia-600 to-pink-500 text-white font-bold rounded-md flex items-center justify-center gap-2 shadow-lg shadow-fuchsia-200 active:scale-95 transition-transform text-sm md:text-base">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        Katılıyorum
+                    </button>
+<button class="bg-surface-container-high text-on-surface-variant font-bold rounded-md flex items-center justify-center gap-2 active:scale-95 transition-transform text-sm md:text-base">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+                        Katılmıyorum
+                    </button>
+</div>
+<!-- Media Upload Action -->
+<button class="w-full h-14 border-2 border-dashed border-primary/30 bg-primary/5 text-primary font-bold rounded-md flex items-center justify-center gap-3 hover:bg-primary/10 transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+                    Fotoğraf/Video Yükle
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/70 backdrop-blur-md rounded-t-3xl shadow-[0px_-10px_30px_rgba(181,0,88,0.1)]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-fuchsia-600 to-pink-500 text-white rounded-full p-3 shadow-lg shadow-fuchsia-200 active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-sans text-[10px] font-semibold tracking-wide">Davetiye</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 p-2 hover:text-fuchsia-500 transition-colors active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-sans text-[10px] font-semibold tracking-wide">Konum</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 p-2 hover:text-fuchsia-500 transition-colors active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+<span class="font-sans text-[10px] font-semibold tracking-wide">Yükle</span>
+</div>
+</nav>
+</body></html>
